@@ -1,0 +1,19 @@
+﻿09-05 23:05:11.234 E/AndroidRuntime(25172): FATAL EXCEPTION: main
+09-05 23:05:11.234 E/AndroidRuntime(25172): Process: com.samsung.android.ruler, PID: 25172
+09-05 23:05:11.234 E/AndroidRuntime(25172): java.lang.RuntimeException: Unable to get provider com.google.android.apps.camera.contentprovider.CameraContentProvider
+09-05 23:05:11.234 E/AndroidRuntime(25172): Caused by: java.lang.NullPointerException: Attempt to get length of null array
+09-05 23:05:11.234 E/AndroidRuntime(25172): 	at com.agc.Camera.getRawSizeW(dex-id-7ebdd3e1591714930f217e9cc5d05c70ce9dc10c:2)
+09-05 23:05:11.234 E/AndroidRuntime(25172): 	at com.agc.CamerasFinder.updateMap(...)
+09-05 23:05:11.234 E/AndroidRuntime(25172): 	at com.Utils.Lens.<init>(...)
+...
+FIX 1 applied -> crash gone; new crash surfaced:
+09-05 23:36:00.474 E/libgcam : [static_metadata.cc:967]: Check: StaticMetadata::frame_raw_max_{width,height} (3648x2736) matches neither the active area size (2304x1728) nor pixel array size (2304x1728).
+09-05 23:36:00.474 E/libgcam : [gcam.cc:301]: Create: StaticMetadata for sensor ID 1 failed basic error checks.
+09-05 23:36:00.476 E/AndroidRuntime: FATAL EXCEPTION: 00UiWorker
+09-05 23:36:00.476 E/AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method 'boolean com.google.googlex.gcam.Gcam.f()' on a null object reference
+...
+FIX 2 applied -> no crashes:
+09-06 00:48:37 : CONNECT device 56 client for package com.samsung.android.ruler (PID 31637, priority 0)
+09-06 00:48:36-37 : AGC scan logs all 14 CameraIds; SetCameraID 56; q5q => redfin
+09-06 01:18:06 : CONNECT device 71 client for package com.samsung.android.ruler (PID 7059, priority 0)  [front]
+09-06 01:17:32 : captured /storage/emulated/0/DCIM/Camera/AGC_20260906_011732208.jpg (4080x3060, verified JPEG)

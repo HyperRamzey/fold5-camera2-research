@@ -1,0 +1,45 @@
+--- a/smali/qix.smali
++++ b/smali/qix.smali
+@@ -3670,12 +3670,42 @@
+     iget-object v0, v0, Lnhj;->b:Lmvi;
+ 
+     iget v0, v0, Lmvi;->b:I
+ 
+     invoke-virtual {v8, v0}, Lcom/google/googlex/gcam/StaticMetadata;->i(I)V
+ 
++    # AGC-Fold5 fix: force frame_raw_max to the sensor's own pixel array size.
++    # Samsung's HAL (SM-F946B) reports inconsistent metadata: e.g. front cam 71
++    # has activeArray=2304x1728 but StreamConfigurationMap YUV/RAW_PRIVATE max is
++    # 3648x2736 (via isSamsungFix YUV fallback), which fails gcam's native
++    # static_metadata.cc check ("frame_raw_max matches neither active area nor
++    # pixel array") and hard-crashes with an NPE on Gcam.f(). Overriding
++    # frame_raw_max with SENSOR_INFO_PIXEL_ARRAY_SIZE dims keeps the check happy
++    # on every Fold5 camera (pixel array == active array on all 14 HAL devices,
++    # and it equals the first RAW size entry Samsung publishes), while being a
++    # no-op for cameras whose raw max already matches.
++    sget-object v0, Landroid/hardware/camera2/CameraCharacteristics;->SENSOR_INFO_PIXEL_ARRAY_SIZE:Landroid/hardware/camera2/CameraCharacteristics$Key;
++
++    invoke-interface {v1, v0}, Lngi;->n(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
++
++    move-result-object v0
++
++    check-cast v0, Landroid/util/Size;
++
++    invoke-virtual {v0}, Landroid/util/Size;->getWidth()I
++
++    move-result v2
++
++    invoke-virtual {v8, v2}, Lcom/google/googlex/gcam/StaticMetadata;->j(I)V
++
++    invoke-virtual {v0}, Landroid/util/Size;->getHeight()I
++
++    move-result v0
++
++    invoke-virtual {v8, v0}, Lcom/google/googlex/gcam/StaticMetadata;->i(I)V
++
+     invoke-static/range {p0 .. p0}, Lqix;->d(Lngi;)J
+ 
+     move-result-wide v2
+ 
+     invoke-static {v2, v3}, Lqix;->c(J)F
+ 

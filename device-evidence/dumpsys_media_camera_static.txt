@@ -1,0 +1,333 @@
+﻿== Service global info: ==
+== Camera HAL device device@1.1/internal/0 (v1.1) static information: ==
+  Resource cost: 66
+  Conflicting devices:
+    Has a flash unit: true
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[12]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[500]
+      android.scaler.availableRawSizes (d0008): int32[136]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+      android.logicalMultiCamera.physicalIds (1a0000): byte[6]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[11]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[492]
+      android.scaler.availableRawSizes (d0008): int32[136]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[9]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[356]
+      android.scaler.availableRawSizes (d0008): int32[34]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/1 (v1.1) static information: ==
+  Resource cost: 51
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Front
+    Orientation: 270
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[5]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[400]
+      android.scaler.availableRawSizes (d0008): int32[18]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/2 (v1.1) static information: ==
+  Resource cost: 51
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[10]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[476]
+      android.scaler.availableRawSizes (d0008): int32[8]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/3 (v1.1) static information: ==
+  Resource cost: 51
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Front
+    Orientation: 270
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[5]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[480]
+      android.scaler.availableRawSizes (d0008): int32[16]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/4 (v1.1) static information: ==
+  Resource cost: 100
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Front
+    Orientation: 270
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[1]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[80]
+      android.scaler.availableRawSizes (d0008): int32[18]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/20 (v1.1) static information: ==
+  Resource cost: 66
+  Conflicting devices:
+    Has a flash unit: true
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[12]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[500]
+      android.scaler.availableRawSizes (d0008): int32[136]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+      android.logicalMultiCamera.physicalIds (1a0000): byte[9]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+== Camera HAL device device@1.1/internal/21 (v1.1) static information: ==
+  Resource cost: 100
+  Conflicting devices:
+    Has a flash unit: true
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[10]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[356]
+      android.scaler.availableRawSizes (d0008): int32[34]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+      android.logicalMultiCamera.physicalIds (1a0000): byte[6]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+== Camera HAL device device@1.1/internal/23 (v1.1) static information: ==
+  Resource cost: 100
+  Conflicting devices:
+    Has a flash unit: true
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[12]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[492]
+      android.scaler.availableRawSizes (d0008): int32[136]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+      android.logicalMultiCamera.physicalIds (1a0000): byte[6]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+== Camera HAL device device@1.1/internal/52 (v1.1) static information: ==
+  Resource cost: 51
+  Conflicting devices:
+    Has a flash unit: true
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[9]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[356]
+      android.scaler.availableRawSizes (d0008): int32[34]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/56 (v1.1) static information: ==
+  Resource cost: 66
+  Conflicting devices:
+    Has a flash unit: true
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[11]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[492]
+      android.scaler.availableRawSizes (d0008): int32[136]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/58 (v1.1) static information: ==
+  Resource cost: 51
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Back
+    Orientation: 90
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[10]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[476]
+      android.scaler.availableRawSizes (d0008): int32[8]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/71 (v1.1) static information: ==
+  Resource cost: 51
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Front
+    Orientation: 270
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[5]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[400]
+      android.scaler.availableRawSizes (d0008): int32[10]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/73 (v1.1) static information: ==
+  Resource cost: 51
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Front
+    Orientation: 270
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[5]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[480]
+      android.scaler.availableRawSizes (d0008): int32[10]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]
+== Camera HAL device device@1.1/internal/90 (v1.1) static information: ==
+  Resource cost: 100
+  Conflicting devices:
+    Has a flash unit: false
+    Facing: Front
+    Orientation: 270
+      android.lens.facing (80005): byte[1]
+      android.request.availableCapabilities (c000c): byte[1]
+        [458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) 458757 (thumbnailQuality) ]
+        [458753 (gpsProcessingMethod) 458754 (gpsTimestamp) 458755 (orientation) 458756 (quality) ]
+        [589829 (minimumFocusDistance) 589830 (shadingMapSize) 589831 (focusDistanceCalibration) 524293 (facing) ]
+        [1703936 (physicalIds) 1703937 (sensorSyncType) 655362 (availableNoiseReductionModes) 786438 (maxNumOutputStreams) ]
+        [786440 (maxNumInputStreams) 786442 (pipelineMaxDepth) 786443 (partialResultCount) 786444 (availableCapabilities) ]
+        [917516 (blackLevelPattern) 917517 (maxAnalogSensitivity) 917518 (orientation) 917519 (profileHueSatMapDimensions) ]
+        [1376256 (supportedHardwareLevel) 1376258 (supportedBufferManagementVersion) 1507329 (maxLatency) 1572865 (maxCaptureStall) ]
+      android.scaler.availableStreamConfigurations (d000a): int32[80]
+      android.scaler.availableRawSizes (d0008): int32[10]
+      android.sensor.info.activeArraySize (f0000): int32[4]
+      android.sensor.info.pixelArraySize (f0006): int32[2]
+      android.sensor.orientation (e000e): int32[1]
+      android.info.supportedHardwareLevel (150000): byte[1]

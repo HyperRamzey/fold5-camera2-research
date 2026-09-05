@@ -1,0 +1,62 @@
+--- a/smali_classes2/com/agc/Camera.smali
++++ b/smali_classes2/com/agc/Camera.smali
+@@ -1467,12 +1467,14 @@
+ 
+ .method public getRawSizeH()I
+     .locals 3
+ 
+     iget-object v0, p0, Lcom/agc/Camera;->rawSizes:[Landroid/util/Size;
+ 
++    if-eqz v0, :cond_1
++
+     array-length v1, v0
+ 
+     const/4 v2, 0x0
+ 
+     if-nez v1, :cond_0
+ 
+@@ -1483,19 +1485,26 @@
+ 
+     invoke-virtual {v0}, Landroid/util/Size;->getHeight()I
+ 
+     move-result v0
+ 
+     return v0
++
++    :cond_1
++    const/4 v0, 0x0
++
++    return v0
+ .end method
+ 
+ .method public getRawSizeW()I
+     .locals 3
+ 
+     iget-object v0, p0, Lcom/agc/Camera;->rawSizes:[Landroid/util/Size;
+ 
++    if-eqz v0, :cond_1
++
+     array-length v1, v0
+ 
+     const/4 v2, 0x0
+ 
+     if-nez v1, :cond_0
+ 
+@@ -1504,12 +1513,17 @@
+     :cond_0
+     aget-object v0, v0, v2
+ 
+     invoke-virtual {v0}, Landroid/util/Size;->getWidth()I
+ 
+     move-result v0
++
++    return v0
++
++    :cond_1
++    const/4 v0, 0x0
+ 
+     return v0
+ .end method
+ 
+ .method public getRawSizes()[Landroid/util/Size;
+     .locals 1
