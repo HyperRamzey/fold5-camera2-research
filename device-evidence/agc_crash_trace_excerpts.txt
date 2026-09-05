@@ -17,3 +17,10 @@ FIX 2 applied -> no crashes:
 09-06 00:48:36-37 : AGC scan logs all 14 CameraIds; SetCameraID 56; q5q => redfin
 09-06 01:18:06 : CONNECT device 71 client for package com.samsung.android.ruler (PID 7059, priority 0)  [front]
 09-06 01:17:32 : captured /storage/emulated/0/DCIM/Camera/AGC_20260906_011732208.jpg (4080x3060, verified JPEG)
+
+=== AUX LENS VERIFICATION (post-fix, via zoom chips in AGC UI) ===
+09-06 02:17:38 : CONNECT device 58 (ultrawide) client for package com.samsung.android.ruler  [0.6x chip]
+09-06 02:21:01 : CONNECT device 58 (ultrawide) client (re-connect cycle)
+09-06 02:23:39 : CONNECT device 52 (3x tele) client for package com.samsung.android.ruler  [2.9x chip], priority -2
+09-06 02:23:53 : captured AGC_20260906_022353109.jpg (3648x2736 = tele native res, verified JPEG)
+=> ALL hidden lenses (56 main / 58 UW / 52 tele / 71 front) verified opening + capturing via com.samsung.android.ruler.

@@ -24,7 +24,8 @@ Root: KernelSU (temporary root, `su` context `u:r:ksu:s0`), **locked bootloader*
 3. **But no module is needed.** The allowlist includes `com.samsung.android.ruler` (and ~25 more
    packages — the exact mechanism GCam modders exploit with `_ruler` builds). Spoofing the package
    name unlocks **everything**: verified live — full 14-ID enumeration, opening the Expert RAW main
-   lens (56, LEVEL_3), the front (71), and the tele (52) / UW (58) aux IDs.
+   lens (56, LEVEL_3), the front (71), and the tele (52) / UW (58) aux IDs via in-app zoom switching,
+   with captures off both the main (4080×3060) and tele (3648×2736) sensors.
 
 4. **AGC 9.2 (BigKaka) works on the Fold 5 after two 3-line-class smali fixes** (see §4), including a
    successful 4080×3060 photo through hidden lens 56. This doubles as the proof that no
@@ -147,6 +148,9 @@ for cameras with consistent metadata the patch is a no-op.
 - Launch: crash buffer **empty**, no `static_metadata.cc` errors (was: 3× fatal + 3× check fail).
 - `CONNECT device 56 client for package com.samsung.android.ruler` — hidden Expert-RAW lens opened.
 - `CONNECT device 71 client for package com.samsung.android.ruler` — front camera opened and closed cleanly.
+- **Every aux lens verified**: zoom-chip switching live-connected `device 58` (ultrawide, 0.6x chip) and
+  `device 52` (3x tele, 2.9x chip); tele capture `AGC_20260906_022353109.jpg` is 3648×2736 — the
+  tele sensor's exact native resolution (proof it really came through lens 52).
 - **Photo captured**: `/storage/emulated/0/DCIM/Camera/AGC_20260906_011732208.jpg`,
   4080×3060 RGB — pulled and verified as valid JPEG (`AGC_first_photo.jpg`).
 - AGC reports back aux IDs `56,58,52,0` and lens map incl. tele (52, 67mm-eq) and UW (58, 14mm-eq).
