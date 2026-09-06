@@ -1,0 +1,79 @@
+--- a/smali_classes2/com/Utils/Lens.smali
++++ b/smali_classes2/com/Utils/Lens.smali
+@@ -82,13 +82,13 @@
+     invoke-static {}, Lcom/Utils/Lens;->getFilteredCameras()Ljava/util/List;
+ 
+     return-void
+ .end method
+ 
+ .method private static getAllCameras()Ljava/util/List;
+-    .locals 6
++    .locals 8
+     .annotation system Ldalvik/annotation/Signature;
+         value = {
+             "()",
+             "Ljava/util/List<",
+             "Lcom/agc/Camera;",
+             ">;"
+@@ -262,29 +262,58 @@
+     move-result-object v3
+ 
+     invoke-static {v3}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+ 
+     move-result-object v3
+ 
++    # AGC-Fold5 fix: the logical main camera (id "0") black-screens on the Fold 5.
++    # Samsung UniHAL puts third-party sessions on the 3RD_PARTY_BYPASS path and
++    # rejects the logical device's multi-physical stream layout
++    # (CheckEnableCondition: isValidStreamConfiguration=false) - the session
++    # configures but the repeating preview request is never started. The physical
++    # main lens (id "56") serves the same framing with full LEVEL_3 RAW access,
++    # so when both are in the filtered list, drop the logical "0" and keep "56".
++    # On devices without "56" this is a no-op, so other Samsungs keep their main.
++    # v6 = has56 flag, v7 = scratch for the "0" comparison.
++    const-string v4, "56"
++
++    invoke-interface {v3, v4}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
++
++    move-result v6
++
+     invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+ 
+-    move-result-object v4
++    move-result-object v7
+ 
+     :goto_1
+-    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
++    invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
+ 
+     move-result v5
+ 
+     if-eqz v5, :cond_1
+ 
+-    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
++    invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+ 
+     move-result-object v5
+ 
+     check-cast v5, Ljava/lang/String;
+ 
++    if-eqz v6, :cond_1c
++
++    const-string v4, "0"
++
++    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v4
++
++    if-eqz v4, :cond_1c
++
++    # current element is "0" and "56" exists -> skip it entirely
++    goto :goto_1
++
++    :cond_1c
+     invoke-interface {v1, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+ 
+     move-result-object v5
+ 
+     check-cast v5, Lcom/agc/Camera;
+ 

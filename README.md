@@ -190,3 +190,27 @@ All device interaction was strictly read-only apart from standard user-space app
 - `gcam_decompiled/` â€” apktool output of AGC 9.2.14 with both Fold5 fixes applied
 - `AGC9.2.14_V14.0_ruler_fold5fix.apk` â€” working patched build
 - `scripts/` â€” adb helpers (base64 su wrapper, read-only pull, screenshot)
+
+## V2 update (2026-09-07): dead-chip fix + 50MP verdict
+
+**Fix 3 — logical camera 0 removed** (patches/0003-Lens-drop-dead-logical-cam0.patch):
+The stock AGC lens list includes both the logical main (id 0) and the physical main (id 56).
+On the Fold 5, camera 0 black-screens: Samsung UniHAL routes third-party sessions through
+3RD_PARTY_BYPASS and rejects the logical device's multi-physical stream layout
+(CheckEnableCondition: isValidStreamConfiguration=false) — the session configures but the
+preview request loop never starts (verified: 86 s of zero capture requests, then flush/close).
+The patch drops id "0" from the lens list whenever "56" is present (no-op on other devices).
+UI now shows only working chips; front (71) + main (56) both verified live post-patch, and a
+Night Sight capture (3060x4080) completed on the v2 build.
+
+**50MP / full-res remosaic: not possible via GCam on this firmware** — see
+50mp-remosaic-analysis.md. Short version: Samsung's HAL supports 50MP remosaic on lens 56
+(vendor tags RemosaicCropCapabilities=[1 ...], mmfSize=[8160x6120], private
+vailableHighresRawStreamConfigurations) but does **not** populate the standard
+SCALER_STREAM_CONFIGURATION_MAP_MAXIMUM_RESOLUTION table that GCam's lobster/50MP pipeline
+reads — probe-proven MAXRES map: null on every camera (see probe/Probe.java). The only
+50MP path on a locked Fold 5 is Expert RAW (Samsung private stream). Also: AGC's "Device
+Interface = Pixel Fold (Felix)" profile crashes (zoom-list IndexOutOfBounds) — stick with the
+auto profile or Comodo.
+
+Patches 1-3 apply cleanly to stock AGC9.2.14_V14.0_ruler.apk apktool output, in order.
