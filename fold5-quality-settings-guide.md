@@ -58,9 +58,16 @@ publishes no RAW streams on ID 71 — see README §4 Fix 2), so treat it differe
 
 1. Main-lens noise model → **"S22U HM3" entry** (in libagc's DB). The S22U main is the closest
    Samsung-Snapdragon 50MP profile to your GN3 — may beat AUTO in extreme low light
-2. **50MP remosaic** (Advanced Settings → 48MP/full-res toggle; main lens exposes 8160×6120
-   full-res RAW in the HAL): bright light + static scene + HDR+ off. Best detail, no merge
-3. Tele Night Sight on tripod — 3648×2736 RAW + OIS handles it surprisingly well
+2. **50MP Expert RAW Mode** — now a shipped toggle (Settings → Lens Setting → Main →
+   **50MP Expert RAW Mode** → ON, shipped in `fold5fix_v3`). Bright light + static scene.
+   Full 8160×6120 remosaic JPEG to `Pictures/AGC_50MP/`, ~1-2 s per shot, single frame
+   (no HDR+ merge — it's the Samsung HighResolution pipeline, not GCam's). Off = stock.
+   Note: it's a JPEG-only path (in-sensor remosaic), so use it for daylight detail, not low light.
+3. **50MP ×6 burst button** (since `fold5fix_v4`) — the **50MP** button in the bottom bar.
+   Fires a 6-frame 8160×6120 burst and merges them (temporal denoise) into one ~54 MB JPEG,
+   ~7 s total. Cleaner shadows/highlights than the single shot at the cost of time; same
+   single-AE limitation (not an HDR bracket). Daylight/static scenes; keep the phone still.
+4. Tele Night Sight on tripod — 3648×2736 RAW + OIS handles it surprisingly well
 
 ## Don't waste time on
 
@@ -69,8 +76,11 @@ publishes no RAW streams on ID 71 — see README §4 Fix 2), so treat it differe
   (the libagc DB has no GN3 entry at all)
 - Pixel 6/7/8 HDR+ models — wrong sensor class, stick with redfin-class defaults
 - Front-camera RAW anything — hardware doesn't offer it (proven in HAL metadata)
-- Any system-level "unlock" work — already done via `_ruler` package + the 2 patches; nothing
+- Any system-level "unlock" work — already done via `_ruler` package + the patches; nothing
   further to enable
+- The old "48MP/full-res" Advanced-Settings toggle — superseded by the real 50MP Expert RAW
+  Mode toggle (v3). The old knob couldn't engage the Samsung remosaic pipeline; the new one
+  does (proven: true 8160×6120 output)
 
 ## Where the menus live (BigKaka AGC 9.2 UI)
 
