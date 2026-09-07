@@ -214,3 +214,26 @@ Interface = Pixel Fold (Felix)" profile crashes (zoom-list IndexOutOfBounds) — s
 auto profile or Comodo.
 
 Patches 1-3 apply cleanly to stock AGC9.2.14_V14.0_ruler.apk apktool output, in order.
+
+## V3 update (2026-09-07): 50MP Expert RAW Mode works - through the Samsung private path
+
+Rather than the dead standard-table route, v3 wires the **Samsung Expert RAW pipeline itself**
+into GCam: a settings toggle (Lens Setting -> Main -> **50MP Expert RAW Mode**) routes the
+shutter through `shootingmode=40` PDK params + `semCreateOutputConfiguration` HighResolution
+streams on hidden lens 56, saving true 8160x6120 remosaic JPEGs to `Pictures/AGC_50MP/`.
+Toggle off = stock GCam behavior, untouched. Full mechanism + verification matrix:
+`device-evidence/FINAL_VERIFICATION.md`.
+
+## V4 update (2026-09-08): 50MP x6 burst button (temporal merge)
+
+A **"50MP" button in the viewfinder bottom bar** fires a 6-frame 8160x6120 RAW10 burst and
+merges it in-app (robust average), producing a single temporally-denoised 50MP JPEG (~7 s,
+~54 MB). Device-proven limits that shape it: the HAL's HighResolution RDI buffer manager
+serves only ~6 in-flight RAW10 frames, per-request manual exposure is overridden (single-AE),
+the repeating preview must stay alive, and the burst must run on the already-open cam-56
+device (a second openCamera = ERROR_CAMERA_IN_USE). Full findings, architecture, and the
+verified run log: `50mp-burst-analysis.md` + `device-evidence/eraw50_burst_success_log.txt`.
+Release: **`AGC9.2.14_V14.0_ruler_fold5fix_v4.apk`** (v1-v3 fixes + burst button).
+
+The v3/v4 feature classes live in `smali_classes2/com/agc/` (see 50mp-burst-analysis.md
+for the full hook map).

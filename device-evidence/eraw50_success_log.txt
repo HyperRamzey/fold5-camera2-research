@@ -1,0 +1,12 @@
+09-07 20:03:36.279 25744 25801 I LEraw50 : openCamera id=56
+09-07 20:03:36.280 25744 25801 I LEraw50 : isEnabled aux=1
+09-07 20:03:36.318 25744 25800 I LEraw50 : 50MP camera opened (device stored; params deferred to capture)
+09-07 20:04:10.243 25744 25744 I LEraw50 : kzq.onShutterButtonClick
+09-07 20:04:10.243 25744 25744 I LEraw50 : isEnabled aux=1
+09-07 20:04:10.245 25744 26263 I LEraw50 : bridge loaded: public static void com.samsung.android.sdk.camera.impl.internal.CustomInterfaceHelper.setSamsungParameter(android.hardware.camera2.CameraDevice,java.lang.String) throws android.hardware.camera2.CameraAccessException
+09-07 20:04:10.246 25744 26263 I LEraw50 : semCreate loaded: public static android.hardware.camera2.params.OutputConfiguration android.hardware.camera2.params.OutputConfiguration.semCreateOutputConfiguration(int,android.view.Surface,int,int)
+09-07 20:04:10.246 25744 26263 I LEraw50 : params ok
+09-07 20:04:10.696 25744 26347 I LEraw50 : 50MP session configured
+09-07 20:04:11.236 25744 26265 I LEraw50 : firing 50MP still after 6 previews
+09-07 20:04:11.921 25744 26265 I LEraw50 : 50MP JPEG saved 22616246 bytes
+09-07 20:04:11.921 25744 26263 I LEraw50 : capture50mp result: true waited=true

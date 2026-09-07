@@ -1,0 +1,33 @@
+=== 50MP still full-frame verification (test app, 2026-09-07 04:32) ===
+Run: com.samsung.android.ruler test app (debug-signed), TestActivity TEST B:
+setParameters(samsungcamera=true;shootingmode=40;ssm_shot_mode=2...) at camera open +
+session [RAW10 8160x6120 opt2 (semCreateOutputConfiguration) + YUV 1920x1440 opt1] +
+repeating PREVIEW with vendor keys (shootingMode=40, ssmShotMode=2, capturePhysicalId=56)
++ STILL_CAPTURE with raw target after 5 preview completions.
+
+Result: B STILL COMPLETED frame=11; B *** RAW 8160x6120; saved 62668800 bytes.
+
+HAL proof (logcat):
+  [CHI_HR] needToHRShot: 12166: HighResolution Shot with Single Shot
+  [CHI_HR] SetHRCapture: 12094: [HR] REQUEST IS MADE FOR: 0x37
+  [CHI_HR] ExecuteCaptureRequest: 7899: Destroying Binning Preview Session. Creating Quadra Preview Session...
+  [CHI_HR] CreateHRSession: m_pHighResolutionRTPSession created
+  [CHI_HR] CheckHighResSessionActive: ActivatePipeline for HighResolutionAiRealtimeSensor2RDI
+  [CHI_HR] RealtimeSessionProcessResult: [HR] Raw Result for Highresolution = 11 / Raw Output Result
+
+Frame analysis (still50mp-fullframe.raw10, 62,668,800 B, rowStride 10240):
+  last nonzero row: 6119 / 6119  (FULL frame; bypass-mode frames had data only in rows 0-1835)
+  row 0    mean=323.1 min 2   max 806
+  row 1500 mean=365.3 min 0   max 805
+  row 3000 mean=401.2 min 0   max 798
+  row 4500 mean=432.2 min 0   max 800
+  row 6000 mean=427.0 min 0   max 803
+All rows contain genuine Bayer data -> true full-resolution 50MP remosaic readout.
+
+=== 50MP JPEG (HAL pipeline) — 2026-09-07 04:50 ===
+Session [RAW10 8160x6120 opt2 + JPEG 8160x6120 opt2 + YUV 1920x1440 opt1]:
+B SESSION CONFIGURED, B STILL COMPLETED frame=11,
+B saved JPEG 4287760 bytes (still50mp.jpg -> device-evidence/eraw-50mp-still.jpg)
+B saved 62668800 bytes raw10 (still50mp.raw10)
+JPEG SOF parse: 8160 x 6120 = true 50MP processed JPEG via Samsung HighResolutionYuv2Jpeg.
+Note: YUV+JPEG combo (no RAW10) fails configure with -38; RAW10+JPEG works.

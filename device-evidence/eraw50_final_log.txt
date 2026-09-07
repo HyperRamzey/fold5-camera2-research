@@ -1,0 +1,4 @@
+09-07 20:28:35.951 29165 29265 I LEraw50 : openCamera id=56
+09-07 20:28:35.951 29165 29265 I LEraw50 : isEnabled aux=0
+09-07 20:28:51.661 29165 29165 I LEraw50 : kzq.onShutterButtonClick
+09-07 20:28:51.661 29165 29165 I LEraw50 : isEnabled aux=0

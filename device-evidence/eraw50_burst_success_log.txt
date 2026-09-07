@@ -1,0 +1,29 @@
+# 50MP x6 BURST — verified success run (2026-09-08 02:08, release build v4, real on-screen button tap)
+# Captured from logcat -d at the time of the run (buffer has since rotated; re-typed verbatim from session output).
+
+09-08 02:08:14.499 I LEraw50 : bridge loaded: public static void com.samsung.android.sdk.camera.impl.internal.CustomInterfaceHelper.setSamsungParameter(android.hardware.camera2.CameraDevice,java.lang.String) throws android.hardware.camera2.CameraAccessException
+09-08 02:08:14.500 I LEraw50 : params ok
+09-08 02:08:15.021 I LEraw50 : session configured
+09-08 02:08:15.577 I LEraw50 : previews settled: 6
+09-08 02:08:16.073 I LEraw50 : still done frame=4313
+09-08 02:08:16.096 I LEraw50 : frame 1 captured (62668800B)
+09-08 02:08:16.134 I LEraw50 : still done frame=4314
+09-08 02:08:16.159 I LEraw50 : frame 2 captured (62668800B)
+09-08 02:08:16.192 I LEraw50 : still done frame=4315
+09-08 02:08:16.217 I LEraw50 : frame 3 captured (62668800B)
+09-08 02:08:16.252 I LEraw50 : still done frame=4316
+09-08 02:08:16.278 I LEraw50 : frame 4 captured (62668800B)
+09-08 02:08:16.312 I LEraw50 : still done frame=4317
+09-08 02:08:16.337 I LEraw50 : frame 5 captured (62668800B)
+09-08 02:08:16.373 I LEraw50 : still done frame=4318
+09-08 02:08:16.399 I LEraw50 : frame 6 captured (62668800B)
+09-08 02:08:16.484 I LEraw50 : collected 6/6 frames
+09-08 02:08:16.968 I LEraw50 : merge done in 484ms
+09-08 02:08:19.778 I LEraw50 : debayer+sharpen done in 2810ms 8160x6120
+09-08 02:08:21.608 I LEraw50 : burst JPEG saved 54749769 bytes -> AGC_50MP_BURST_1788822501547.jpg
+09-08 02:08:21.609 I LEraw50 : burst total 7112ms, saved=true
+
+# Output verification (SOF-parsed locally):
+# BURST JPEG: 8160 x 6120, bytes: 54749769, bpp: 8.77
+# Pillow mean luma (64x48 downscale): 105.3 -> real, well-exposed content
+# Sample in this folder: AGC_50MP_BURST_sample_2048px.jpg
