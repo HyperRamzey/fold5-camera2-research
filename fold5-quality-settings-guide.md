@@ -58,15 +58,15 @@ publishes no RAW streams on ID 71 — see README §4 Fix 2), so treat it differe
 
 1. Main-lens noise model → **"S22U HM3" entry** (in libagc's DB). The S22U main is the closest
    Samsung-Snapdragon 50MP profile to your GN3 — may beat AUTO in extreme low light
-2. **50MP Expert RAW Mode** — now a shipped toggle (Settings → Lens Setting → Main →
-   **50MP Expert RAW Mode** → ON, shipped in `fold5fix_v3`). Bright light + static scene.
-   Full 8160×6120 remosaic JPEG to `Pictures/AGC_50MP/`, ~1-2 s per shot, single frame
-   (no HDR+ merge — it's the Samsung HighResolution pipeline, not GCam's). Off = stock.
-   Note: it's a JPEG-only path (in-sensor remosaic), so use it for daylight detail, not low light.
-3. **50MP ×6 burst button** (since `fold5fix_v4`) — the **50MP** button in the bottom bar.
-   Fires a 6-frame 8160×6120 burst and merges them (temporal denoise) into one ~54 MB JPEG,
-   ~7 s total. Cleaner shadows/highlights than the single shot at the cost of time; same
-   single-AE limitation (not an HDR bracket). Daylight/static scenes; keep the phone still.
+2. **50MP Expert RAW Mode toggle** (Settings → Lens Setting → Main, since `fold5fix_v3`).
+   In `fold5fix_v4.1` this toggle **only controls the 50MP viewfinder button**: ON = button
+   visible, OFF = fully stock viewfinder. The normal shutter is ALWAYS GCam's own 12MP
+   pipeline regardless of the toggle.
+3. **50MP ×6 burst button** (since `fold5fix_v4`, fixed in `v4.1`) — the **50MP** oval
+   button above the bottom-right controls (visible when the toggle is ON). Fires a
+   6-frame 8160×6120 burst and merges them (temporal denoise, neutral color) into one
+   ~35 MB JPEG, ~5–9 s total; the viewfinder auto-recovers after. Same single-AE
+   limitation (not an HDR bracket). Daylight/static scenes; keep the phone still.
 4. Tele Night Sight on tripod — 3648×2736 RAW + OIS handles it surprisingly well
 
 ## Don't waste time on

@@ -158,16 +158,16 @@ for cameras with consistent metadata the patch is a no-op.
 ### Reproduce the patched APK
 
 Source APK: `AGC9.2.14_V14.0_ruler.apk` (in research folder root)
-Current build (all fixes, ready to install): **`AGC9.2.14_V14.0_ruler_fold5fix_v4.apk`** —
-download from the [v4.0.0 release](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v4.0.0), or build it yourself below.
+Current build (all fixes, ready to install): **`AGC9.2.14_V14.0_ruler_fold5fix_v4.1.apk`** —
+download from the [v4.1.0 release](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v4.1.0), or build it yourself below.
 
 ```sh
 apktool d AGC9.2.14_V14.0_ruler.apk -o gcam_decompiled
 # apply patches 1-3 (see patches/) + v3/v4 feature classes (see 50mp-burst-analysis.md)
 apktool b gcam_decompiled -o out.apk
 zipalign -p 4 out.apk out-aligned.apk
-apksigner sign --ks <debug.keystore> --out AGC9.2.14_V14.0_ruler_fold5fix_v4.apk out-aligned.apk
-adb install -r AGC9.2.14_V14.0_ruler_fold5fix_v4.apk
+apksigner sign --ks <debug.keystore> --out AGC9.2.14_V14.0_ruler_fold5fix_v4.1.apk out-aligned.apk
+adb install -r AGC9.2.14_V14.0_ruler_fold5fix_v4.1.apk
 ```
 
 ## 5. Safety record (goal constraint: zero device writes)
@@ -189,7 +189,7 @@ All device interaction was strictly read-only apart from standard user-space app
 - `device-evidence/` — dumpsys/getprop/logcat captures, prefs, screenshots, captured JPEG
 - `binaries/` — cameraserver + Samsung camera provider/HAL libs (pulled read-only), strings dumps
 - `gcam_decompiled/` — apktool output of AGC 9.2.14 with both Fold5 fixes applied
-- `AGC9.2.14_V14.0_ruler_fold5fix_v4.apk` — current working build (see releases)
+- `AGC9.2.14_V14.0_ruler_fold5fix_v4.1.apk` — current working build (see releases)
 - `scripts/` — adb helpers (base64 su wrapper, read-only pull, screenshot)
 
 ## V2 update (2026-09-07): dead-chip fix + 50MP verdict
@@ -238,3 +238,24 @@ Release: **`AGC9.2.14_V14.0_ruler_fold5fix_v4.apk`** (v1-v3 fixes + burst button
 
 The v3/v4 feature classes live in `smali_classes2/com/agc/` (see 50mp-burst-analysis.md
 for the full hook map).
+
+## V4.1 update (2026-09-08): burst fixes + shutter back to stock
+
+Four user-reported issues fixed, verified E2E on device:
+
+1. **Pink/magenta cast** — device-probed color science: GN3 CFA is **GBRG** (not RGGB),
+   black level **256**, white level **4095**; and the HighResolution RAW10 stream is
+   **pre-white-balanced** by the HAL, so the debayer applies unity gains (measured output
+   R/G=1.01, B/G=1.12 — matches the HAL's own JPEG).
+2. **Viewfinder freeze after burst** — GCam never re-opens cam-56 passively, so after the
+   save the app restarts the CameraActivity; the viewfinder, device store and button all
+   rebuild (frame-diff verified live).
+3. **Button placement** — bottom_bar ignores margins and clips translated children; the
+   button now attaches to the window DecorView ~25% of screen height above the old slot,
+   clear of every control.
+4. **Shutter = stock 12MP always** — the kzq funnel hook and the dead single-shot chain
+   are removed. The **50MP toggle now gates only the button** (Settings → Lens Setting →
+   Main → 50MP Expert RAW Mode): ON = button visible, OFF = stock viewfinder.
+
+Build: `AGC9.2.14_V14.0_ruler_fold5fix_v4.1.apk` (release v4.1.0). Details:
+`50mp-burst-analysis.md` + `device-evidence/eraw50_v4.1_final_log.txt`.

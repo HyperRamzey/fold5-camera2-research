@@ -1,0 +1,33 @@
+--------- beginning of main
+09-08 14:30:55.665 30406 30481 I LEraw50 : openCamera id=56
+09-08 14:30:55.666 30406 30481 I LEraw50 : isEnabled aux=1
+09-08 14:30:55.710 30406 30480 I LEraw50 : 50MP camera opened (device stored; params deferred to capture)
+09-08 14:30:55.987 30406 30406 I LEraw50 : isEnabled aux=1
+09-08 14:30:55.988 30406 30406 I LEraw50 : 50MP burst button added (toggle on)
+09-08 14:31:22.649 30406 30803 I LEraw50 : bridge loaded: public static void com.samsung.android.sdk.camera.impl.internal.CustomInterfaceHelper.setSamsungParameter(android.hardware.camera2.CameraDevice,java.lang.String) throws android.hardware.camera2.CameraAccessException
+09-08 14:31:22.649 30406 30803 I LEraw50 : params ok
+09-08 14:31:23.180 30406 30804 I LEraw50 : session configured
+09-08 14:31:23.734 30406 30803 I LEraw50 : previews settled: 6
+09-08 14:31:24.216 30406 30804 I LEraw50 : still done frame=681
+09-08 14:31:24.237 30406 30804 I LEraw50 : frame 1 captured (62668800B)
+09-08 14:31:24.275 30406 30804 I LEraw50 : still done frame=682
+09-08 14:31:24.296 30406 30804 I LEraw50 : frame 2 captured (62668800B)
+09-08 14:31:24.356 30406 30804 I LEraw50 : frame 3 captured (62668800B)
+09-08 14:31:24.356 30406 30804 I LEraw50 : still done frame=683
+09-08 14:31:24.396 30406 30804 I LEraw50 : still done frame=684
+09-08 14:31:24.410 30406 30804 I LEraw50 : frame 4 captured (62668800B)
+09-08 14:31:24.457 30406 30804 I LEraw50 : still done frame=685
+09-08 14:31:24.472 30406 30804 I LEraw50 : frame 5 captured (62668800B)
+09-08 14:31:24.517 30406 30804 I LEraw50 : still done frame=686
+09-08 14:31:24.537 30406 30804 I LEraw50 : frame 6 captured (62668800B)
+09-08 14:31:24.538 30406 30803 I LEraw50 : collected 6/6 frames
+09-08 14:31:24.738 30406 30803 I LEraw50 : device closed - GCam will rebuild its session
+09-08 14:31:25.004 30406 30803 I LEraw50 : merge done in 266ms
+09-08 14:31:25.004 30406 30803 I LEraw50 : AWB gains reported (not applied - stream is pre-WB): R=1.109375 B=2.3164062
+09-08 14:31:27.161 30406 30803 I LEraw50 : debayer+sharpen done in 2157ms 8160x6120
+09-08 14:31:27.980 30406 30803 I LEraw50 : burst JPEG saved 32691808 bytes -> AGC_50MP_BURST_1788867087960.jpg
+09-08 14:31:27.980 30406 30803 I LEraw50 : burst total 5334ms, saved=true
+09-08 14:32:37.621 31271 31328 I LEraw50 : openCamera id=56
+09-08 14:32:37.621 31271 31328 I LEraw50 : isEnabled aux=0
+09-08 14:32:37.929 31271 31271 I LEraw50 : isEnabled aux=0
+09-08 14:32:37.929 31271 31271 I LEraw50 : 50MP toggle off - burst button hidden
