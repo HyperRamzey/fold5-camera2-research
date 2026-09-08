@@ -259,3 +259,10 @@ Four user-reported issues fixed, verified E2E on device:
 
 Build: `AGC9.2.14_V14.0_ruler_fold5fix_v4.1.apk` (release v4.1.0). Details:
 `50mp-burst-analysis.md` + `device-evidence/eraw50_v4.1_final_log.txt`.
+
+## Fold5 build & config field notes (2026-09-09)
+
+**`fold5-build-config-guide.md`** — which GCam actually works on the Fold5 (build survey:
+AGC 9.2 ruler vs 9.6/LMC/MGC — only 9.2 runs; the "GN3 support" claim disproven by
+libagc inspection), the final tuned config (`fold5_best.agc`, attached to the v4.1.0
+release), and root causes for settings-not-saving / all-lens black viewfinder.
