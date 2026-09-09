@@ -266,3 +266,7 @@ Build: `AGC9.2.14_V14.0_ruler_fold5fix_v4.1.apk` (release v4.1.0). Details:
 AGC 9.2 ruler vs 9.6/LMC/MGC — only 9.2 runs; the "GN3 support" claim disproven by
 libagc inspection), the final tuned config (`fold5_best.agc`, attached to the v4.1.0
 release), and root causes for settings-not-saving / all-lens black viewfinder.
+
+## v4.3.0 — Front camera fix (2026-09-09)
+
+The front camera now works. The Fold5's front cams (ids 1/3/71/73) are hwLevel LIMITED with no RAW output — three gates (Go-layer RawSizeW filter, session-builder exception, HDR+ ZSL hang) all patched. See patches/0004-* and patches/0005-*, the fold5-build-config-guide.md front-fix section, and the [v4.3.0 release](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v4.3.0) (APK + final config). Front photos persist at 3648x2736; back HDR+ unchanged; per-lens HDR+ matrix ships in old5_best.agc.
