@@ -1,0 +1,67 @@
+diff --git a/smali_classes2/com/agc/CamerasFinder.smali b/smali_classes2/com/agc/CamerasFinder.smali
+--- a/smali_classes2/com/agc/CamerasFinder.smali
++++ b/smali_classes2/com/agc/CamerasFinder.smali
+@@
+ .method private getRawSizes(Landroid/hardware/camera2/CameraCharacteristics;)[Landroid/util/Size;
+-    .locals 1
++    .locals 2
++
++    # AGC-Fold5 fix (this is the copy that feeds Camera construction):
++    # RAW16 -> RAW10 -> RAW12 -> YUV_420_888 fallback. The Fold5 front cams
++    # (1, 3, 71, 73) expose no RAW output at all, so the stock RAW16-only
++    # query returns null -> Go CalcFrontMainCamera gates on RawSizeW != 0 and
++    # drops every front camera from CameraIDs -> no front/back switch button.
++    # Returning the YUV max sizes lets the front pass the visibility gate;
++    # the engine's own stream picker (qix.h, with Globals.HdrRawFixSecond
++    # YUV_420_888 fallback on Samsung) still picks the real per-camera format.
+ 
+     sget-object v0, Landroid/hardware/camera2/CameraCharacteristics;->SCALER_STREAM_CONFIGURATION_MAP:Landroid/hardware/camera2/CameraCharacteristics$Key;
+ 
+     invoke-virtual {p1, v0}, Landroid/hardware/camera2/CameraCharacteristics;->get(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
+@@
+     const/16 v0, 0x20
+ 
+     invoke-virtual {p1, v0}, Landroid/hardware/camera2/params/StreamConfigurationMap;->getOutputSizes(I)[Landroid/util/Size;
+ 
+-    move-result-object p1
++    move-result-object v1
+ 
+-    return-object p1
++    if-eqz v1, :cond_fb1
++
++    return-object v1
++
++    :cond_fb1
++    # RAW16 null -> RAW10 (0x25)
++    const/16 v0, 0x25
++
++    invoke-virtual {p1, v0}, Landroid/hardware/camera2/params/StreamConfigurationMap;->getOutputSizes(I)[Landroid/util/Size;
++
++    move-result-object v1
++
++    if-eqz v1, :cond_fb2
++
++    return-object v1
++
++    :cond_fb2
++    # RAW10 null -> RAW12 (0x26)
++    const/16 v0, 0x26
++
++    invoke-virtual {p1, v0}, Landroid/hardware/camera2/params/StreamConfigurationMap;->getOutputSizes(I)[Landroid/util/Size;
++
++    move-result-object v1
++
++    if-eqz v1, :cond_fb3
++
++    return-object v1
++
++    :cond_fb3
++    # RAW12 null -> YUV_420_888 (0x23) - the Fold5 front cameras land here
++    const/16 v0, 0x23
++
++    invoke-virtual {p1, v0}, Landroid/hardware/camera2/params/StreamConfigurationMap;->getOutputSizes(I)[Landroid/util/Size;
++
++    move-result-object v1
++
++    return-object v1
+ .end method

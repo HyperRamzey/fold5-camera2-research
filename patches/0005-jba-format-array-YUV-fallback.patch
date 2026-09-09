@@ -1,0 +1,101 @@
+diff --git a/smali_classes2/jba.smali b/smali_classes2/jba.smali
+--- a/smali_classes2/jba.smali
++++ b/smali_classes2/jba.smali
+@@
+ .method public static varargs b(Lngi;[I)Lnhj;
+-    .locals 4
++    .locals 5
+ 
+     const-string v0, "jba.b()"
+ 
+     invoke-static {v0, p1}, Lcom/agc/Log;->e(Ljava/lang/Object;[I)I
+ 
+     array-length v0, p1
+ 
+     const/4 v1, 0x0
+ 
+     :goto_0
+-    if-ge v1, v0, :cond_1
++    if-ge v1, v0, :cond_fb0
+ 
+     aget v2, p1, v1
+ 
+     invoke-interface {p0, v2}, Lngi;->x(I)Ljava/util/List;
+ 
+     move-result-object v3
+ 
+     invoke-static {v3, v2}, Ljba;->e(Ljava/util/List;I)Lnhj;
+ 
+     move-result-object v2
+ 
+     if-eqz v2, :cond_0
+ 
+     return-object v2
+ 
+     :cond_0
+     add-int/lit8 v1, v1, 0x1
+ 
+     goto :goto_0
+ 
++    # AGC-Fold5 fix: the Fold5 front cameras (ids 1/3/71/73) have no RAW
++    # output at all. When the format array (e.g. [RAW16] after the mod's
++    # IsSupportRAW10 check strips RAW10 for a no-RAW camera) yields no sizes,
++    # fall back through RAW10 -> RAW12 -> YUV_420_888 before giving up, the
++    # same order the mod's own AUTO array uses. YUV_420_888 is always present
++    # on these LIMITED front devices, so the front session gets a workable
++    # (format, size) pair instead of IllegalStateException "No supported
++    # output sizes found!!" -> cancelled viewfinder -> dead front camera.
++    :cond_fb0
++    const/16 v2, 0x25
++
++    invoke-interface {p0, v2}, Lngi;->x(I)Ljava/util/List;
++
++    move-result-object v3
++
++    invoke-static {v3, v2}, Ljba;->e(Ljava/util/List;I)Lnhj;
++
++    move-result-object v4
++
++    if-eqz v4, :cond_fb1
++
++    return-object v4
++
++    :cond_fb1
++    const/16 v2, 0x26
++
++    invoke-interface {p0, v2}, Lngi;->x(I)Ljava/util/List;
++
++    move-result-object v3
++
++    invoke-static {v3, v2}, Ljba;->e(Ljava/util/List;I)Lnhj;
++
++    move-result-object v4
++
++    if-eqz v4, :cond_fb2
++
++    return-object v4
++
++    :cond_fb2
++    const/16 v2, 0x23
++
++    invoke-interface {p0, v2}, Lngi;->x(I)Ljava/util/List;
++
++    move-result-object v3
++
++    invoke-static {v3, v2}, Ljba;->e(Ljava/util/List;I)Lnhj;
++
++    move-result-object v4
++
++    if-eqz v4, :cond_1
++
++    return-object v4
++
+     :cond_1
+     new-instance p0, Ljava/lang/IllegalStateException;
+ 
+     const-string p1, "No supported output sizes found!!"
+ 
+     invoke-direct {p0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+ 
+     throw p0
+ .end method

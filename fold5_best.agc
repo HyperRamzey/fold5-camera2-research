@@ -21,13 +21,11 @@
     <string name="pref_frame_count_ns_key">0</string>
     <string name="lib_pref_metering_mode_key">0</string>
     <set name="pref_all_camera_id_list_key">
+        <string>0</string>
         <string>23</string>
         <string>56</string>
-        <string>58</string>
-        <string>0</string>
-        <string>1</string>
         <string>2</string>
-        <string>3</string>
+        <string>58</string>
         <string>5</string>
         <string>6</string>
         <string>71</string>
@@ -61,13 +59,19 @@
     <string name="lib_sabre_sharp_tuning_radius_l1_key"></string>
     <string name="lib_zoom_ratio_key">2.0</string>
     <string name="lib_pref_frame_count_zsl_key_p0_0">25</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_1">0</string>
     <string name="pref_camera_hdr_plus_back_flashmode_thermally_disabled_key">0</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_2">0</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_3">0</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_4">0</string>
     <int name="max_hdr_plus_burst_frame_count" value="25" />
+    <string name="lib_pref_frame_count_zsl_key_p0_5">0</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_6">0</string>
     <string name="lib_sharp_gain_macro_key"></string>
     <boolean name="camcorder.fb_preview_1080p60fps" value="true" />
     <string name="info_board_key">kalama</string>
     <string name="lib_luma_denoise_new_b_key"></string>
-    <int name="tooltip_impression_trigger_count_for_long_exposure_smarts_chip" value="1" />
+    <int name="tooltip_impression_trigger_count_for_long_exposure_smarts_chip" value="0" />
     <string name="pref_raw_key">0</string>
     <string name="lib_sharp_depth_2_key">Off (as in library)</string>
     <string name="pref_awb_bg_coeff_key">1.0</string>
@@ -119,10 +123,14 @@
     <string name="lib_hardmerge_key_p0_0">3</string>
     <string name="pref_camera_grid_lines_mode">0</string>
     <string name="pref_camera_hdr_plus_override_key_p0_0">on</string>
+    <string name="pref_camera_hdr_plus_override_key_p0_1">on</string>
     <string name="lib_luma_dl_sabre_l1_key">Off (as in library)</string>
     <string name="patch_profile_key_0">0</string>
     <string name="lib_setuxmode_key">Off (as in library)</string>
+    <string name="pref_camera_hdr_plus_override_key_p0_2">on</string>
+    <string name="pref_camera_hdr_plus_override_key_p0_3">off</string>
     <string name="lib_hdr_effect_intensity_key">Off (as in library)</string>
+    <string name="pref_camera_hdr_plus_override_key_p0_4">off</string>
     <string name="lib_merge23_luma_dm_sabre_l4a_key">Off (as in library)</string>
     <string name="lib_luma_b_key"></string>
     <string name="lib_luma_smoothing_key">Off (as in library)</string>
@@ -249,6 +257,7 @@
     <string name="lib_bayer_noise_model_halide_1_key">Off (as in library)</string>
     <string name="lib_shasta_max_exp_ms_key">0.0</string>
     <string name="lib_sabre_sharp_tuning_l18_key"></string>
+    <string name="pref_camera_video_back_flashmode_thermally_disabled_key">0</string>
     <string name="lib_dehazed_expo_key">Off (as in library)</string>
     <string name="lib_temporal_radius_2_key">Off (as in library)</string>
     <string name="lib_merge23_luma_dh_sabre_l3b_key">Off (as in library)</string>
@@ -300,6 +309,7 @@
     <string name="lib_suppress_hot_pixels_key">Off (as in library)</string>
     <string name="lib_max_bracketing_frames_key"></string>
     <string name="lib_sabre_sharp_tuning_radius_l5_key"></string>
+    <string name="pref_hdr_tooltip_countdown">1</string>
     <string name="lib_luma_dl_sabre_l3b_key">Off (as in library)</string>
     <string name="pref_expcomp_portrait_key">0</string>
     <string name="lib_temporal_radius_key_p0_0">512</string>
@@ -308,6 +318,7 @@
     <string name="pref_awb_key_0">0</string>
     <string name="lib_sharpen_default_h_1a_key"></string>
     <boolean name="camcorder.ap" value="true" />
+    <int name="tooltip_impression_count_for_p11_edu" value="1" />
     <string name="lib_sabre_2_key_p0_0">100(default)</string>
     <string name="lib_exposure_darker_key"></string>
     <string name="pref_50mp_eraw_key">0</string>
@@ -356,6 +367,7 @@
     <string name="pref_vffps_high_key">30</string>
     <string name="pref_satcct_g_key">1.0</string>
     <string name="pref_camera_switch_position_key">right</string>
+    <string name="pref_upscaling_key">0</string>
     <string name="pref_camera_hdr_plus_key">on</string>
     <string name="lib_rr_key">1.679</string>
     <string name="pref_bitrate_key">0</string>
@@ -525,7 +537,7 @@
     <string name="lib_merge23_luma_dl_sabre_l2_key">Off (as in library)</string>
     <string name="pref_expcomp_ns_key">0</string>
     <string name="lib_skipmetadatacheck_key">Off (as in library)</string>
-    <string name="pref_lens_moved_notification_count">1</string>
+    <string name="pref_lens_moved_notification_count">2</string>
     <int name="camera.catfish.max_frames" value="25" />
     <string name="pref_red_coeff_key">1.0</string>
     <string name="lib_sabre_3_key_p0_0">10 (default)</string>
@@ -629,9 +641,7 @@
     <string name="lib_highlight_fix_2_key">Off (as in library)</string>
     <set name="pref_camera_id_list_key">
         <string>56</string>
-        <string>1</string>
         <string>58</string>
-        <string>3</string>
         <string>71</string>
         <string>73</string>
         <string>52</string>
@@ -754,6 +764,7 @@
     <string name="pref_exposure_control_key">1</string>
     <string name="lib_sabre_sharp_tuning_radius_l18_key"></string>
     <string name="lib_sharp_distrib_rad_2_key">Off (as in library)</string>
+    <long name="tooltip_latest_impression_timestamp_for_p11_edu" value="1788962017839" />
     <string name="lib_sharp_legibility_key">Off (as in library)</string>
     <string name="lib_highlight_key">Off (as in library)</string>
     <int name="c2api.viewfinder_noise_reduction_mode" value="2" />

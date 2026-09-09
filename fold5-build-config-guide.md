@@ -89,3 +89,29 @@ adb push fold5_best.agc /sdcard/Download/AGC.9.2/configs/
 
 The 50MP Expert RAW toggle (`pref_50mp_eraw_key_0`) gates only the viewfinder burst button
 since v4.1; the normal shutter is always GCam's stock 12MP pipeline either way.
+
+## v4.3 — Front camera fix (2026-09-09)
+
+The Fold5 front cameras (ids 1, 3, 71, 73) are hwLevel LIMITED with **no RAW output at all**. Three independent gates kept the front camera dead on this device; all three are now patched in the v4.3 build:
+
+### Root cause chain (verified end-to-end)
+1. **Go-layer filter (libagc.so)**: `CalcFrontMainCamera` only admits a front camera to `CameraIDs` when `RawSizeW != 0`. The Java `getRawSizes()` queried RAW16 (0x20) only → null on all four front cams → the flip button never rendered (`GetFilteredCameraIDs 56,58,52,0`, no front ids).
+   **Fix (patch 0004)**: `getRawSizes()` fallback chain RAW16 → RAW10 (0x25) → RAW12 (0x26) → YUV_420_888 (0x23) in BOTH copies (com/agc/Camera.smali + com/agc/CamerasFinder.smali — the latter feeds the real Camera construction). Result: `CameraId: 71 CameraRawSizes: [3648x2736, ...]`, `GetFilteredCameraIDs 56,58,52,71,0`, `SetCamera &{71 ... 3648 2736 ...}` — front main enters the switch cycle (`getSwitchCameraList [56, 71]`).
+2. **Session builder exception**: the engine's format picker received `[RAW16]` (the mod's `IsSupportRAW10` check strips RAW10 for no-RAW cameras) → `jba.b()` threw `IllegalStateException: No supported output sizes found!!` → `CAM_iiu: Cancelling viewfinder due to createTransaction exception` → front session configured zero streams (Request ID counter stuck at 0).
+   **Fix (patch 0005)**: `jba.b()` now falls back RAW10 → RAW12 → YUV_420_888 before throwing. The front session builds on YUV_420_888 (3648x2736 on id 71) — the same path the stock Samsung selfie camera uses. Request counter climbs, viewfinder streams.
+3. **HDR+ per-lens matrix**: front cameras cannot complete the ZSL reprocessing merge in a LIMITED session (stuck shots: `marked stuck`, `onCaptureCanceled-API2_ZSL`). The mod's per-lens override keys (`pref_camera_hdr_plus_override_key_p0_<auxKey>` — the suffix is the index in the filtered lens list, front 71 = slot 3, 73 = slot 4) now ship `off` for front slots, `on` for all back slots (56/58/52). The mod copies the current lens's override into the global key at every lens switch, so back lenses always restore HDR+ automatically.
+
+### Verified results (all in pitch-black, lenses covered — persistence is the test)
+- Front switch button renders; state-aware tap loop reaches front 71 (`SetCameraID: 71`, `openCamera id=71`, Active client 71, Request ID counter 5+).
+- **Front photo persisted**: AGC_20260909_191524558.jpg (3648x2736 = front main max YUV resolution, f/1.8, ISO 5743) and repeat captures (AGC_20260909_194933374.jpg, 8mm focal = front lens) — shot_db rows `failed=0 stuck=0 NORMAL`.
+- **Back HDR+ regression-free**: multiple HDR_PLUS shots persisted during the same test window (17:47/18:29/18:30/19:21/19:22/19:48/19:54), `failed=0 stuck=0`.
+- Cold-launch opens on back main 56, activity stays on top; force-stop/relaunch cycles clean; zero FATAL in crash buffer.
+
+### Dark-frame findings (noise model / black level)
+- The mod runs `Noise Model ID 0` = **AUTO** on every camera (see `Download/AGC.9.2/logs/_NM_*.txt`: Noise Model A/B/C/D all 0) — the engine derives per-shot noise coefficients from HAL sensor metadata. The exported as_/bs_/do_ noise-table keys are inert in this mode; no GN3 profile exists in any AGC build (proven by libagc inspection in the build survey).
+- Black levels: `black_level_*=64.0` (8-bit domain) and `pref_black_level_key_0=6` (≈ 256/4095 as %) both match the probed GN3 10-bit pedestal of 256. Pitch-black captures at max auto-exposure (ISO 1600, f/1.8, 1/3s) come out pure 0.00 mean / 0.00 stdev — the pedestal subtraction works; nothing leaks through HDR+.
+- Front-camera dark shots (ISO 5743) equally clean, no stuck shots.
+
+### Config notes
+- `pref_camera_id_list_key` = [56, 58, 71, 73, 52] — the two LIMITED front ultrawide/closeup ids (1, 3) stay OUT: opening them triggers `CAM_fuy: Camera Hardware failure -> Finishing activity` (the cold-launch hide bug). Front main 71 + front UW 73 are the working set.
+- The per-aux ZSL frame-count keys (`lib_pref_frame_count_zsl_key_p0_N`) are set 0 (engine default) for non-main positions; main stays 25.
