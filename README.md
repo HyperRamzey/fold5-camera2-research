@@ -269,7 +269,7 @@ release), and root causes for settings-not-saving / all-lens black viewfinder.
 
 ## v4.3.0 — Front camera fix (2026-09-09)
 
-The front camera now works. The Fold5's front cams (ids 1/3/71/73) are hwLevel LIMITED with no RAW output — three gates (Go-layer RawSizeW filter, session-builder exception, HDR+ ZSL hang) all patched. See patches/0004-* and patches/0005-*, the fold5-build-config-guide.md front-fix section, and the [v4.3.0 release](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v4.3.0) (APK + final config). Front photos persist at 3648x2736; back HDR+ unchanged; per-lens HDR+ matrix ships in old5_best.agc.
+The front camera now works. The Fold5's front cams (ids 1/3/71/73) are hwLevel LIMITED with no RAW output — three gates (Go-layer RawSizeW filter, session-builder exception, HDR+ ZSL hang) all patched. See patches/0004-*and patches/0005-*, the fold5-build-config-guide.md front-fix section, and the [v4.3.0 release](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v4.3.0) (APK + final config). Front photos persist at 3648x2736; back HDR+ unchanged; per-lens HDR+ matrix ships in old5_best.agc.
 
 ## v5.0.0 — Full A/B tuning pass + Day/Night profiles (2026-09-13)
 

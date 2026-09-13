@@ -72,7 +72,7 @@ Patches apply cleanly to the stock AGC9.2.14_V14.0_ruler apktool output: repo �
 
 ### 📥 Download & install
 
-**[DOWNLOAD LINK — attach APK here]**
+**[DOWNLOAD — v5.0.0 release (GitHub)](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v5.0.0)** — APK + `fold5_day_sun.agc` + `fold5_night_full.agc` in the release assets. Legacy v4.x releases stay on their own tags for history.
 
 1. Uninstall any previous GCam/AGC on the Fold 5 first (package `com.samsung.android.ruler`).
 2. Install the APK (allow unknown sources).
@@ -96,7 +96,9 @@ Sign key: self-signed debug — install with `-r` over the stock AGC `_ruler` bu
 | Front | HDR+ off for people; it's YUV-only, ≤8 frames static scenes |
 | 50MP full-res | Try it: main lens exposes 8160×6120 RAW — bright light, static scene, HDR+ off |
 
-If you import JavaSaBr's S23U `.agc` configs for the "Medium" tuning: it's **safe** (AGC discards the config's lens/ID bindings on import — verified in its ConfigLoader code), but keep noise model/AWB on AUTO anyway. Since the V2 update below there's a better option — the Fold 5-specific tuned Day/Night configs, no S23U import needed.
+If you import JavaSaBr's S23U `.agc` configs for the "Medium" tuning: it's **safe** (AGC discards the config's lens/ID bindings on import — verified in its ConfigLoader code), but keep noise model/AWB on AUTO anyway. Since the V2 update below there's a better option — the Fold 5-specific tuned Day/Night profiles, no S23U import needed.
+
+**⚠️ One important trap with this build:** the profile picker's built-in **Ka** rows (KaNight/KaDay) are BigKaka's RAM patch bundles compiled for the **stock** tune. On a tuned config they land wrong and corrupt the merge — measured: a blown, crushed, color-shifted frame plus an insanely bright preview with a hard half-screen seam (the night-tune preview tonemap mis-firing in daylight). If your viewfinder suddenly looks nuclear or photos come out crushed, you're on a Ka row — switch to Profile 1/2 and it clears. RAM patches are volatile: if anything feels wedged, force-close and reopen the app.
 
 ---
 
@@ -134,11 +136,11 @@ Honest caveat: the ladder was tuned in morning light, so AE never actually hit t
 - `fold5_day_sun.agc` — daylight: **Profile 1 (Day)** in the app's picker — stock ceilings (compiled defaults), fast bursts in sun
 - `fold5_night_full.agc` — night: **Profile 2 (Night)** — the full tuned state (8s / 60 frames / 50 ceilings + every keep above)
 
-The profiles live in the app's own quick profile picker (the patch button in the viewfinder) as rows 1/2, titled "Day (sun)" / "Night (full tune)". Switching = one tap; importing the other config file does the same through Settings. Rows 3+ are stock empty slots. **Do not use the built-in "Ka" rows** — KaNight/KaDay are BigKaka's RAM patch bundles compiled for the stock tune; on a tuned config they corrupt the merge (measured: blown crushed frame) and the preview tonemap. Don't ask how I know.
+The profiles live in the app's own quick profile picker (the patch button in the viewfinder) as rows 1/2, titled "Day (sun)" / "Night (full tune)" — one tap to switch. The config files attached to the release do the same thing through Settings → Import if you prefer. Rows 3+ are stock empty slots. **Do not use the built-in "Ka" rows** — KaNight/KaDay are BigKaka's RAM patch bundles compiled for the stock tune; on a tuned config they corrupt the merge (measured: blown crushed frame) and the preview tonemap. Don't ask how I know.
 
 Switching = importing the other file (round-trip verified through the app's own picker). After your own hand-tweaks, the **Save** button snapshots current state as a new `.agc` in the same folder. No root needed to import.
 
-**[ATTACH fold5_day_sun.agc + fold5_night_full.agc here]**
+**[Files on the v5.0.0 release: fold5_day_sun.agc + fold5_night_full.agc]**
 
 Mechanism notes for the curious: `lib_patch_profile_key` is the patch selector — 0 = no patch (pure compiled bare state), 1/2 = the built-in KaNight/KaDay RAM bundles (avoid), N≥3 = user profile slot N−3, where `lib_*_key_p{N−3}_{lens}` entries override the bare keys per profile/lens (missing keys fall back to bare). Day = slot 0 left empty (bare defaults), Night = slot 1 carrying the full tune. The tuned scalars are visible and editable in the GUI too: Image processing → Main Settings. The tuning pass itself ran over wireless ADB with root (KernelSU); the harness scripts are in the repo. Root is only needed to *produce* configs, never to use them.
 
