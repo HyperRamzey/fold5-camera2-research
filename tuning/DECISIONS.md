@@ -215,3 +215,57 @@ MECHANISM NOTES: lib_patch_profile_key=N selects slot N; pN_M overrides > bare f
   Day/Night configs isolate by selector value, no same-key dual-slot writes.
 DUAL-DISPLAY GOTCHA: Fold5 cover display holds lockscreen UI dumps (systemui); camera/settings run on
   inner display (displayId 0, 904x2316 screenshots). uiautomator dumps inner display when unlocked.
+
+## GUI PROFILE INCIDENT (2026-09-13 ~15:39) - "profile one pic is bad, viewfinder insanely bright outside with half-screen seam"
+SMALI-DECODED GUI MAPPING (Patch.smali patchAll + AdvancedSettings): lib_patch_profile_key:
+  0 = NO patch (pure bare/compiled) · 1 = KaNight · 2 = KaDay (BigKaka BUILT-IN RAM patch bundles,
+  precompiled hex offsets for STOCK tune state) · 3+ = user ProfileN slots (_pN_M overrides).
+USER EFFECT: selecting "profile 1" = KaNight RAM-patched our HEAVILY-TUNED p0_0 running state ->
+  capture: crushed/blown frame (luma 136.5, noise 1.879, sharp 4.352 - vs healthy 15:40 siblings at
+  same scene/light seconds later: noise ~24, sharp ~53.5). Measured in AB_RESULTS (15:39 row).
+  viewfinder: corrupted preview tonemap = insanely bright outside + hard half-screen seam (~-50 nits
+  boundary = RAM patch region edge; only visible when scene bright enough to expose it - indoor
+  looked "tuned properly" because dim scenes mask the offset).
+  profiles 3/4 (Day/Night slots): clean fall-through to bare tune = healthy near-identical pics (user
+  confirmed "+-same"), matching measurement.
+RECOVERY EXECUTED: force-stop (RAM patches are VOLATILE - process kill flushes them), selector 3
+  (Day slot) written + verified, cold boot, camera ID 56 healthy (PID chain 4253->5697->6642 stable).
+POST-RECOVERY VERIFY: back-to-back indoor pair (RECOVER/CTRL 8 min apart): noise 1.15/1.11,
+  sharp 2.90/2.87, R/G consistent warm indoor - pipeline CONSISTENT, night merge functioning on dim
+  scene (1/20s ISO565-680). Viewfinder capture post-flush: smooth scene gradient, no seam.
+RULES LEARNED: (1) NEVER select Profile 1/2 (KaNight/KaDay) with the tuned config - built-in patch
+  bundles assume stock state; (2) RAM patch contamination clears with process kill, no XML damage
+  (full XML diff vs 07:50 snapshot: only cosmetic tag-style re-serialization, zero value changes);
+  (3) GUI profile picker rows 1/2 are Ka built-ins, user slots start at row 3.
+
+## PROFILE RE-MAP (2026-09-13 17:4x-18:0x) - user request: "move profile 3\4 to 1\2" + CORRECTED selector semantics
+SMALI TRUTH (patchAll() in com/agc/Patch.smali, fully decoded): lib_patch_profile_key semantics:
+  0 = NO patch call (pure compiled bare) · 1 = KaNight · 2 = KaDay (BigKaka built-in RAM bundles,
+  offsets compiled for STOCK state - never use with tuned config) · N>=3 = user profile slot N-3
+  (lib_*_key_pN-3_M overrides consumed by libagc). GUI: PatchButton lists Disable/Ka/KaDay then
+  Profile rows 1..12 (= slots 0..11); row titles via lib_profile_title_key_p{slot}_{lens}.
+CORRECTION OF 09-13 07:xx MODEL: earlier claim "selector N reads slot N directly" was WRONG (the
+  morning "slot3 test" +55% was measured vs a 2h-stale ref - ordinary drift, NOT slot application;
+  slot 3 was never honored). Also dissolved: the 07:00 "p0+p3 dual-slot wedge" was actually the
+  slot-0 tone-bomb being consumed at selector 3 (p0_0 + selector 3 = slot 0 active).
+USER INCIDENT RE-EXPLAINED: "profile one" bad pic = night tune (slot 0) firing in afternoon sun
+  (60-frame/8s merge = blowout + crushed; warm volume-processing shift). 15:39 pic: luma 136.5
+  noise 1.879 sharp 4.352. Profiles 3/4 = slots 2/3 (empty/stock) = healthy "+-same" pair (15:40:
+  noise 24.1/23.7, sharp 53.4/53.5). Viewfinder brightness/seam = night-tune preview tonemap in
+  daylight - indoor looked fine because dim scenes mask it.
+SWAP EXECUTED (pref-write atomic local rebuild + cat-into-place preserving owner/mode):
+  slot 0: EMPTIED (69 keys moved) -> Profile 1 = Day (bare compiled defaults = stock ceilings)
+  slot 1: FULL NIGHT TUNE (70 keys incl. E-bank 8000/60/50, hardmerge 3, volume 25.0) -> Profile 2 = Night
+  slot 3: 6 stale day-overrides removed; old/wrong-format title keys removed
+  titles written (exact getProfileTitle format): lib_profile_title_key_p0_0 = "Day (sun)",
+    lib_profile_title_key_p1_0 = "Night (full tune)"
+  entry-count audit: 840 -> 832 (6 slot-3 keys + 4 stale titles - 2 new titles) - verified on-device
+APPLICATION PROOF: slot-1 probe tone_p1_0=0.001 at selector 4 WEDGED camera open (value consumed -
+  slot 1 live); removal -> instant recovery (healthy shot PID 15933). Post-swap shots healthy on
+  both selectors (PID chain 14094/15933 stable, camera ID 56). Dim-scene caveat: NS auto-engages in
+  current indoor light on ANY profile (EXIF frame-count 23 adaptive) - Day/Night behavioral split
+  (25-cap vs 60-bank) differentiates only in real darkness; dusk verification pending.
+CONFIGS REBUILT ON-DEVICE + PULLED: fold5_day_sun.agc (selector 3 = Profile 1 Day),
+  fold5_night_full.agc (selector 4 = Profile 2 Night). Both 52197 bytes, full-state snapshots.
+  NOTE: earlier published semantics were REVERSED (day_sun selector-3-into-slot3 never active);
+  all copies on device + repo + release assets now corrected BEFORE v5.0.0 release.

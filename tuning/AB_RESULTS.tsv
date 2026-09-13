@@ -157,3 +157,7 @@ Danglon	day-pair ON: camera.anglerfish_enabled	camera.enable_saturn	true	56	True
 Dangloff	day-pair OFF: camera.anglerfish_enabled	camera.enable_saturn	true	56	True	3060x4080	104.6/0.959/0.923/7.645/16.848	VERDICT: PASS (color ok; noise/sharp not degraded)
 SLOT3	slot3 mechanism test: tone_p3_0=0.001 vs bare tone 1.0	camera.enable_saturn	true	56	True	3060x4080	100.7/0.922/0.957/11.854/22.896	VERDICT: PASS (color ok; noise/sharp not degraded)
 DAYP	DAY profile active (slot3: E-bank stock, bare tune base)	camera.enable_saturn	true	56	True	3060x4080	105.7/0.929/0.96/11.314/22.616	VERDICT: PASS (color ok; noise/sharp not degraded)
+RECOVER	post-KaNight recovery: selector 3, RAM flushed	camera.enable_saturn	true	56	True	4080x3060	88.9/1.135/0.919/1.151/2.902	MEASURE_INCOMPLETE
+CTRL	control pair leg 2 (same scene as RECOVER, seconds apart)	camera.enable_saturn	true	56	True	4080x3060	78.6/1.187/0.908/1.114/2.868	VERDICT: PASS (color ok; noise/sharp not degraded)
+P1DAY	post-swap Profile1 (Day/bare) verification	camera.enable_saturn	true	56	True	4080x3060	83.8/1.194/0.91/0.837/2.435	MEASURE_INCOMPLETE
+P2CTRL	slot1 probe removed control (selector 4)	camera.enable_saturn	true	56	True	4080x3060		REF_BASELINE (no previous shot - this becomes the reference)

@@ -131,14 +131,16 @@ Honest caveat: the ladder was tuned in morning light, so AE never actually hit t
 
 **Day / Night profiles — selectable in the app's own GUI.** The app has a native config-file system: Settings → **Configs, LUT, Libraries, AWB, NoiseModel file** → Import → `/Download/AGC.9.2/configs/`. Two snapshots live there:
 
-- `fold5_day_sun.agc` — daylight: exposure bank at stock (4s / 30 frames / 25 ceilings) → fast bursts in sun
-- `fold5_night_full.agc` — night: the full tuned state (8s / 60 frames / 50 ceilings + every keep above)
+- `fold5_day_sun.agc` — daylight: **Profile 1 (Day)** in the app's picker — stock ceilings (compiled defaults), fast bursts in sun
+- `fold5_night_full.agc` — night: **Profile 2 (Night)** — the full tuned state (8s / 60 frames / 50 ceilings + every keep above)
+
+The profiles live in the app's own quick profile picker (the patch button in the viewfinder) as rows 1/2, titled "Day (sun)" / "Night (full tune)". Switching = one tap; importing the other config file does the same through Settings. Rows 3+ are stock empty slots. **Do not use the built-in "Ka" rows** — KaNight/KaDay are BigKaka's RAM patch bundles compiled for the stock tune; on a tuned config they corrupt the merge (measured: blown crushed frame) and the preview tonemap. Don't ask how I know.
 
 Switching = importing the other file (round-trip verified through the app's own picker). After your own hand-tweaks, the **Save** button snapshots current state as a new `.agc` in the same folder. No root needed to import.
 
 **[ATTACH fold5_day_sun.agc + fold5_night_full.agc here]**
 
-Mechanism notes for the curious: `lib_patch_profile_key=N` selects patch slot N, and `lib_*_key_pN_M` entries override the bare keys per slot/lens (missing keys fall back to bare). The tuned scalars are visible and editable in the GUI too: Image processing → Main Settings. One hazard found the hard way: writing the **same key at two slot levels simultaneously** (p0_0 + p3_0) wedges the camera HAL until reboot — don't. The tuning pass itself ran over wireless ADB with root (KernelSU); the harness scripts are in the repo. Root is only needed to *produce* configs, never to use them.
+Mechanism notes for the curious: `lib_patch_profile_key` is the patch selector — 0 = no patch (pure compiled bare state), 1/2 = the built-in KaNight/KaDay RAM bundles (avoid), N≥3 = user profile slot N−3, where `lib_*_key_p{N−3}_{lens}` entries override the bare keys per profile/lens (missing keys fall back to bare). Day = slot 0 left empty (bare defaults), Night = slot 1 carrying the full tune. The tuned scalars are visible and editable in the GUI too: Image processing → Main Settings. The tuning pass itself ran over wireless ADB with root (KernelSU); the harness scripts are in the repo. Root is only needed to *produce* configs, never to use them.
 
 **Fold 5 gotchas from the pass:**
 

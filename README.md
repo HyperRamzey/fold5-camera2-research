@@ -270,3 +270,15 @@ release), and root causes for settings-not-saving / all-lens black viewfinder.
 ## v4.3.0 — Front camera fix (2026-09-09)
 
 The front camera now works. The Fold5's front cams (ids 1/3/71/73) are hwLevel LIMITED with no RAW output — three gates (Go-layer RawSizeW filter, session-builder exception, HDR+ ZSL hang) all patched. See patches/0004-* and patches/0005-*, the fold5-build-config-guide.md front-fix section, and the [v4.3.0 release](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v4.3.0) (APK + final config). Front photos persist at 3648x2736; back HDR+ unchanged; per-lens HDR+ matrix ships in old5_best.agc.
+
+## v5.0.0 — Full A/B tuning pass + Day/Night profiles (2026-09-13)
+
+No APK changes — same v4.3.0 binary. What's new is a complete A/B tuning campaign for this exact device: **158 measured rows**, one variable per step (apply key → cold-restart camera on lens 56 → shot → measure → diff → KEEP/REVERT), all evidence in [`tuning/`](tuning/) (`DECISIONS.md` + `AB_RESULTS.tsv` + harness scripts).
+
+- **Night Sight exposure bank** — up to 4x more total light banked (8s per-frame ceilings, 60 ZSL frames, 50 burst ceilings); engages in real darkness, morning-light PASS with drift caveats
+- **24 feature flags dispositioned** — 14 kept (incl. gyrfalcon: +12.3% sharp matched-light; sabre_raw: RAW/DNG enabled), 7 reverted with measured reasons
+- **3 camera-breakers identified** — `cyclops`/`falcon`/`hawk` `*_enabled` master gates block camera open; inner functional flags work. Do not set
+- **14 lib scalars probed** — 7 kept / 7 reverted; the "neutral" lib keys are live global scalars, not dead entries
+- **Day/Night profiles in the app's own GUI** — profile picker rows 1/2: "Day (sun)" (stock ceilings, fast daylight bursts) / "Night (full tune)" (the full tuned state). One-tap switching; also shippable as `.agc` config files (`fold5_day_sun.agc` / `fold5_night_full.agc` on the release). Do not use the built-in Ka rows (KaNight/KaDay RAM bundles are compiled for the stock tune — corrupt the merge on a tuned config)
+
+Dusk stable-light re-verify is the documented next step.
