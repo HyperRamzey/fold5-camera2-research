@@ -4,7 +4,7 @@
 
 **Title suggestion:**
 
-`[GCam] AGC 9.2.14 _ruler for Galaxy Z Fold 5 (SM-F946B) — all lenses working + full research on why Samsung hides them`
+`[GCam] AGC 9.2.14 _ruler for Galaxy Z Fold 5 (SM-F946B) — all lenses working + full research on why Samsung hides them + tuned day/night configs`
 
 ---
 
@@ -96,7 +96,57 @@ Sign key: self-signed debug — install with `-r` over the stock AGC `_ruler` bu
 | Front | HDR+ off for people; it's YUV-only, ≤8 frames static scenes |
 | 50MP full-res | Try it: main lens exposes 8160×6120 RAW — bright light, static scene, HDR+ off |
 
-If you import JavaSaBr's S23U `.agc` configs for the "Medium" tuning: it's **safe** (AGC discards the config's lens/ID bindings on import — verified in its ConfigLoader code), but keep noise model/AWB on AUTO anyway.
+If you import JavaSaBr's S23U `.agc` configs for the "Medium" tuning: it's **safe** (AGC discards the config's lens/ID bindings on import — verified in its ConfigLoader code), but keep noise model/AWB on AUTO anyway. Since the V2 update below there's a better option — the Fold 5-specific tuned Day/Night configs, no S23U import needed.
+
+---
+
+### 🎛️ V2 update (Sept 13) — full A/B tuning pass + Day/Night configs
+
+The repo now includes a complete A/B tuning campaign for this exact device — a 158-row evidence log, every step one variable at a time: apply key → cold-restart the camera app on main lens 56 → one shot → measure luma / color balance (R/G, B/G) / noise / sharpness → diff vs the previous shot → KEEP or REVERT (works + not broken = keep). It started with a 32-step night pass on a static indoor scene (deep night, luma ~10) that established the confirmed baselines — notably `lib_hardmerge_key=1` (sabre merge) outputs **black frames** on this HAL, `=2` (spatial bayer) works but measured measurably softer (−9% and −13.5% sharp in two separate retests), so 3 stays. Everything below is grep-verified against the live config; full logs in the repo's `tuning/` folder (`DECISIONS.md` + `AB_RESULTS.tsv` + the harness scripts).
+
+**Night Sight exposure bank — up to 4x more total light.** Six exposure-path ceilings raised in a single ladder, every step functionally PASS:
+
+| Key | Was | Now |
+| --- | --- | --- |
+| `lib_max_exp_ms_key_p0_0` (per-frame exposure cap) | 4000 ms | **8000 ms** |
+| `lib_shasta_max_exp_ms_key_p0_0` (shasta night-merge cap) | 4000 ms | **8000 ms** |
+| `lib_pref_frame_count_zsl_key_p0_0` (Night Sight frame count) | 30 | **60** |
+| `lib_max_frame_count_key_p0_0` (burst ceiling) | 25 | **50** |
+| `lib_max_bracketing_frames_key_p0_0` | 25 | **50** |
+| `lib_max_short_frames_key_p0_0` | 25 | **50** |
+
+Honest caveat: the ladder was tuned in morning light, so AE never actually hit the ceilings during testing — this is **banked headroom** (frames × per-frame exposure = up to 4x more light available to the night merge) that only engages in real darkness. Treat the daytime numbers as directional; the stable-light re-verification list is in the repo log.
+
+**Feature flags — 24 probed, every one dispositioned:**
+
+- **Kept (14):** anglerfish, ark, beholder_force_opt_in, the falcon inner trio (force_fusion + md + tpu), force_anglerfish.RESTART, force_cuttle.extended, **gyrfalcon** (strongest isolated win of the pass: +12.3% sharp at matched light — the super-res upscale stage actually fires), hawk_force_fusion + hawk_tpu, ica_in_front, kepler, and **sabre_raw** (gates RAW/DNG saving in sabre mode — RAW capture now enabled at zero JPEG-path cost).
+- **Reverted (7):** autobahn_options (softening), decepticon_force_run (no benefit — the decepticon path already runs via `decepticon_enabled=true`), falcon_always_on and gouda.firefly (both hard-fail: noise up AND sharp down), gouda.matting (2:1 softening — it's portrait segmentation, no static-scene gain), sabre_gcam (AE-shift only, no image change — and it would silently reinterpret the entire sabre key family Google-style), shasta_ON (2:1 softening).
+
+⚠️ **Camera-breakers — do NOT set these three:** `camera.cyclops_enabled`, `camera.falcon_enabled`, `camera.hawk_enabled`. All three block the camera from opening at all on lens 56 (no crash in the buffer — the open just never completes; same signature, verified three times). Pattern: the `*_enabled` master gates on the newer codename features are stubbed in this port, while their inner functional flags (force_fusion / md / tpu) work fine. If you set one anyway: remove the key, force-stop the app — the camera recovers, nothing persistent.
+
+**Lib scalars — surprise finding: the "neutral" lib keys are live global scalars, not dead entries.** 14 probed:
+
+- **Kept (7):** sharpness_b 0.5 (+9.4% sharp vs +3.8% noise), luma_a 0.5, luma_b 0.5 (a daylight ON/OFF pair confirmed this one — removing it costs +13.3% noise), chroma_a 0.5, spatial_a 0.5, spatial_b 0.5, tone 1.0 (best matched-light pair of the whole campaign: +6.3% sharp at flat noise).
+- **Reverted (7):** sharpness_a 0.5 (halves the whole sharpening stack: −27.6% sharp), chroma_b 0.5 (2:1 smear), denoise 1.0 (the global master — re-couples every downstream denoiser, softening), sharp_gain 1.5 (**2.5x grain explosion** — both metrics go up and the verdict gate passes, but the image is visibly oversharpened; beware that class of "win"), gamma 1.0 (no measurable signal), brightness 1.0 (softening — brightness belongs in the exposure bank, not post), noise_reduction_adjust 1.0 (clamps the whole tuned stack at unity).
+
+**Day / Night profiles — selectable in the app's own GUI.** The app has a native config-file system: Settings → **Configs, LUT, Libraries, AWB, NoiseModel file** → Import → `/Download/AGC.9.2/configs/`. Two snapshots live there:
+
+- `fold5_day_sun.agc` — daylight: exposure bank at stock (4s / 30 frames / 25 ceilings) → fast bursts in sun
+- `fold5_night_full.agc` — night: the full tuned state (8s / 60 frames / 50 ceilings + every keep above)
+
+Switching = importing the other file (round-trip verified through the app's own picker). After your own hand-tweaks, the **Save** button snapshots current state as a new `.agc` in the same folder. No root needed to import.
+
+**[ATTACH fold5_day_sun.agc + fold5_night_full.agc here]**
+
+Mechanism notes for the curious: `lib_patch_profile_key=N` selects patch slot N, and `lib_*_key_pN_M` entries override the bare keys per slot/lens (missing keys fall back to bare). The tuned scalars are visible and editable in the GUI too: Image processing → Main Settings. One hazard found the hard way: writing the **same key at two slot levels simultaneously** (p0_0 + p3_0) wedges the camera HAL until reboot — don't. The tuning pass itself ran over wireless ADB with root (KernelSU); the harness scripts are in the repo. Root is only needed to *produce* configs, never to use them.
+
+**Fold 5 gotchas from the pass:**
+
+- Tapping the **Night-mode chip** in the portrait chip row crashes the app on this device (pre-existing zoom-module resolver crash — reproduces byte-identically on the stock AGC build, so it's not a tuning artifact). Night captures work via auto-engagement; the exposure bank lives in the photo pipeline anyway.
+- If the phone dies mid-tune, the last-applied key **survives** in the config — always re-verify state after any interruption before judging results.
+- Wireless ADB rotates its port on every reboot (and the daemon can drop when the battery dies) — reconnect via `adb mdns services`.
+
+**Dusk re-verify pending:** several keeps were measured in drifting morning light (sunrise + clouds) — the ratios were consistent but the light wasn't. The stable-light confirmation list is documented in the repo log; treat morning numbers as directional until that pass runs.
 
 ---
 
@@ -128,3 +178,4 @@ Standard GCam-modding disclaimer: this is a modified proprietary Pixel Camera bi
 *Changelog:*
 
 - *V1 — initial Fold 5 release: Fix 1 (scanner NPE) + Fix 2 (front-cam gcam metadata rejection) on AGC9.2.14_V14.0_ruler base. All four lenses verified: 56/58/52/71.*
+- *V2 (2026-09-13) — no APK changes, configs + research only: full A/B tuning campaign (158-row log), Night Sight exposure bank (up to 4x light), 14 feature flags kept / 7 reverted / 3 camera-breakers identified, 7 lib scalars kept / 7 reverted, and GUI-selectable Day/Night `.agc` configs.*

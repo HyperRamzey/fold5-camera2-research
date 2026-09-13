@@ -1,0 +1,17 @@
+﻿A1	SABRE_ALLOWED	SABRE_ALLOWED	true	GLOBAL				KEEP
+A5	ultra_short_frame	camera.include_ultra_short_frame	true	GLOBAL				KEEP
+A6	extended_base_frame	camera.nonzsl_extended_base_frame_selection	true	GLOBAL				KEEP
+A2	shasta_force	camera.shasta.force	true	GLOBAL				KEEP
+A8	zsl_buffer_size	gcam.zsl_buffer_size	8	GLOBAL				KEEP
+A9	sabre_burst_size	gcam.sabre_burst_size	15	GLOBAL				KEEP
+A21	hdr_memory_reserve	camera.hdr_memory_reserve	true	GLOBAL				KEEP
+A18a	hdrplus_wb_source	gcam.hdrplus_wb_source	1	GLOBAL				KEEP
+A20	eager_merge	gcam.eager_simultaneous_merge_and_finish	true	GLOBAL				KEEP
+B6a	volume_29	lib_volume_processing_key	29.0	ALL				KEEP
+B7	fix_shasta_off	lib_fix_shasta_merge_key	Off (as in library)	ALL				KEEP
+B12	temporal_256	lib_temporal_radius_key	256 (Default)	ALL				KEEP
+B24	savannah_1125	lib_savannah_merge_key	1.125	ALL				KEEP
+N1	max_exp_4000	lib_max_exp_ms_key	4000	ALL				KEEP
+N2	shasta_max_4000	lib_shasta_max_exp_ms_key	4000	ALL				KEEP
+C1	wide_zsl_25	lib_pref_frame_count_zsl_key_p0_1	25	_p0_1				KEEP
+C2	tele_zsl_25	lib_pref_frame_count_zsl_key_p0_2	25	_p0_2				KEEP
