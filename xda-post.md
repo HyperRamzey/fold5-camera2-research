@@ -58,15 +58,24 @@ The gate is **not** the HAL, kernel, or any prop you can flip:
 
 ---
 
-### 🩹 The two Fold 5 fixes in this build (both published as smali diffs)
+### 🩹 The five Fold 5 fixes in this build (all published as smali diffs in `patches/`)
 
-**Fix 1 — NPE in AGC's camera scanner** (`com.agc.Camera.getRawSizeW/getRawSizeH`)
+**Fix 1 — NPE in AGC's camera scanner** (`com.agc.Camera.getRawSizeW/getRawSizeH`, patch 0001)
 AGC crashes on boot with `Attempt to get length of null array` because the Fold 5's front cameras legitimately have **no RAW sizes** and the stock code does `array-length` before any null check. Added null guards → graceful 0 return.
 
-**Fix 2 — gcam native rejecting our front camera** (`qix.smali`)
+**Fix 2 — gcam native rejecting our front camera** (`qix.smali`, patch 0002)
 The interesting one. Samsung's front HAL device (71) publishes `availableRawSizes = [2304×1728, 4608×3456]` but its stream-configuration table has **no RAW_SENSOR entries** — only YUV at 3648×2736. AGC's Samsung-fix substitutes YUV as the "raw" source, so GCam's native `static_metadata.cc` consistency check saw `frame_raw_max 3648×2736` vs `activeArray 2304×1728`, failed the sensor, nulled the `Gcam` object → hard crash on `Gcam.f()` from two threads. The fix forces `frame_raw_max` to the sensor's own pixel-array dims (which match active array on every Fold 5 device). No-op for consistent cameras, so back lenses are untouched.
 
-Patches apply cleanly to the stock AGC9.2.14_V14.0_ruler apktool output: repo → `patches/`.
+**Fix 3 — dead logical camera 0 dropped from the lens list** (`com/Utils/Lens.smali`, patch 0003)
+Samsung's HAL exposes a logical multi-camera device (id 0) that can never be opened directly — it just pollutes AGC's camera list and can grab the lens switcher. The fix filters it out of `getAllCameras()`, leaving the real physical IDs.
+
+**Fix 4 — front camera raw-size gate unblocks the front switch** (`com/agc/CamerasFinder.smali`, patch 0004)
+AGC's finder queries RAW16 only; the Fold5 front cams (1, 3, 71, 73) expose no RAW at all → null → Go's `CalcFrontMainCamera` gates on `RawSizeW != 0` and silently drops every front camera → **no front/back switch button**. The fix adds a RAW16 → RAW10 → RAW12 → YUV_420_888 fallback returning the YUV max sizes, so the front passes the visibility gate while the engine's own stream picker still chooses the real per-camera format.
+
+**Fix 5 — jba stream-format array YUV fallback** (`jba.smali`, patch 0005)
+Same family: the stream-format loop hard-required a RAW entry per camera and threw on the RAW-less front; the fallback walks the format array and accepts YUV_420_888 as the merge source for the front path.
+
+Patches apply cleanly to the stock AGC9.2.14_V14.0_ruler apktool output — repo → `patches/`, each numbered in apply order.
 
 ---
 
@@ -182,4 +191,4 @@ Standard GCam-modding disclaimer: this is a modified proprietary Pixel Camera bi
 *Changelog:*
 
 - *V1 — initial Fold 5 release: Fix 1 (scanner NPE) + Fix 2 (front-cam gcam metadata rejection) on AGC9.2.14_V14.0_ruler base. All four lenses verified: 56/58/52/71.*
-- *V2 (2026-09-13) — no APK changes, configs + research only: full A/B tuning campaign (158-row log), Night Sight exposure bank (up to 4x light), 14 feature flags kept / 7 reverted / 3 camera-breakers identified, 7 lib scalars kept / 7 reverted, and GUI-selectable Day/Night `.agc` configs.*
+- *V2 (2026-09-13) — no APK changes, configs + research only: full A/B tuning campaign (158-row log), Night Sight exposure bank (up to 4x light), 14 feature flags kept / 7 reverted / 3 camera-breakers identified, 7 lib scalars kept / 7 reverted, and GUI-selectable Day/Night profiles — now at picker rows 1/2 — plus the corrected profile-slot mechanism (Ka-row trap documented). Patch series in the repo: 0001–0005 (V1 launch fixes 0001/0002; v4.x burst work 0003; v4.3 front-cam gates 0004/0005).*
