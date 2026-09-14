@@ -953,3 +953,26 @@ NOTE: g4 leg had duplicate gamma keys (7+4) — reading valid as stacked margina
 Final discovery tally from the recalled exhaustion: Google-sect s1 (+28% chroma,
 ceiling-safe — joins Arcide in color-power class), FriggAndSo t32 (+9% floor, ceiling
 flat — safe-lift class #2), LM Test gamma floor-crush duality.
+### EXTENDED SAFARI — NEW FAMILIES (15:26-15:34) — final families closed:
+
+TOGGLE FAMILY (value format: 1 | 0 | "Off (as in library)" — NOT "ON"!):
+  - lib_highlight_fix_key (sun fix) 1: DEAD in Photo mode (merge-side, flat vs ref9)
+  - lib_optimize_sky_key 1: DEAD in Photo mode (flat)
+  - WEDGE BUG #3 confirmed: writing "ON" (the label) wedges app launch same class as
+    tone-labels and ldr "On". The stored formats are now fully mapped: 1|0 for on/off,
+    1|Off-string for global-only, plain ints for curves, decimals for coeff/patch keys.
+
+POINT ANCHORS:
+  - lib_white_point_key 0.6: Nuke — global darkening (p5 -13%, p50 -16%, p95 -12%).
+    The ceiling anchor inverse of black_point. Raising toward 1.0 = lift-all direction.
+
+AWB FAMILY:
+  - lib_pref_awb_rg_coeff 1.15 (no enable): ~flat (R-B -9.1->-11.8) — GATED-DEAD without
+    lib_enable_awb_key (same pattern as satcct needing lib_enable_color_key). The coeff
+    chain exists but needs its enable; the 56-phone AWB model list = documented future
+    flavor axis (swap-in looks, not package levers).
+
+### EXTENDED SAFARI COMPLETE — every family the port exposes for Day now has measured
+signatures: gpu shader family, curves (60), sects, tone/contrast/dehaze/ldr, point
+anchors, sharpness rack, satcct chain, AWB coeffs (gated), toggles (dead), HDR capture
+knobs (dead), lighting (wedges), white_point (nuke). Standing package v3.1 unchanged.
