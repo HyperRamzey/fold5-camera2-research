@@ -58,11 +58,11 @@
     <string name="lib_gpu_vignette_end_key">0</string>
     <string name="lib_sabre_sharp_tuning_radius_l1_key"></string>
     <string name="lib_zoom_ratio_key">2.0</string>
-    <string name="lib_pref_frame_count_zsl_key_p0_0">25</string>
-    <string name="lib_pref_frame_count_zsl_key_p0_1">0</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_0">30</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_1">25</string>
     <string name="pref_camera_hdr_plus_back_flashmode_thermally_disabled_key">0</string>
-    <string name="lib_pref_frame_count_zsl_key_p0_2">0</string>
-    <string name="lib_pref_frame_count_zsl_key_p0_3">0</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_2">25</string>
+    <string name="lib_pref_frame_count_zsl_key_p0_3">30</string>
     <string name="lib_pref_frame_count_zsl_key_p0_4">0</string>
     <int name="max_hdr_plus_burst_frame_count" value="25" />
     <string name="lib_pref_frame_count_zsl_key_p0_5">0</string>
@@ -128,7 +128,7 @@
     <string name="patch_profile_key_0">0</string>
     <string name="lib_setuxmode_key">Off (as in library)</string>
     <string name="pref_camera_hdr_plus_override_key_p0_2">on</string>
-    <string name="pref_camera_hdr_plus_override_key_p0_3">off</string>
+    <string name="pref_camera_hdr_plus_override_key_p0_3">on</string>
     <string name="lib_hdr_effect_intensity_key">Off (as in library)</string>
     <string name="pref_camera_hdr_plus_override_key_p0_4">off</string>
     <string name="lib_merge23_luma_dm_sabre_l4a_key">Off (as in library)</string>
@@ -148,7 +148,7 @@
     <string name="lib_luma_dl_sabre_l4a_key">Off (as in library)</string>
     <string name="pref_frame_count_ns_key_0">25</string>
     <string name="pref_config_nickname_key">sanjxz</string>
-    <string name="lib_max_exp_ms_key_p0_0">1000</string>
+    <string name="lib_max_exp_ms_key_p0_0">4000</string>
     <string name="lib_sharpness_a_key"></string>
     <string name="lib_gpu_rgb_blue_key">0</string>
     <string name="lib_shastaforce_key">Off (as in library)</string>
@@ -162,7 +162,7 @@
     <string name="lib_merge23_luma_dl_sabre_l4a_key">Off (as in library)</string>
     <string name="lib_chroma_smoothing_key">Off (as in library)</string>
     <string name="pref_switch_long_action_key">lib_group_default_key</string>
-    <string name="lib_savannah_merge_key_p0_0">1.000 (Default)</string>
+    <string name="lib_savannah_merge_key_p0_0">1.125</string>
     <string name="lib_max_exp_ms_key">0.0</string>
     <string name="pref_merge_key">0</string>
     <string name="lib_smoothing_spatial_key">Off (as in library)</string>
@@ -197,7 +197,7 @@
     <string name="lib_merge23_luma_dl_sabre_l1b_key">Off (as in library)</string>
     <boolean name="camcorder_prewire_record_surface" value="true" />
     <string name="lib_luma_a_key"></string>
-    <string name="pref_sensor_color_filter_key_0">2</string>
+    <string name="pref_sensor_color_filter_key_0">0</string>
     <boolean name="camera.direct_encode" value="true" />
     <string name="lib_sabre_sharp_tuning_radius_l14_key"></string>
     <boolean name="camera.cuttlefish_bone" value="true" />
@@ -312,7 +312,7 @@
     <string name="pref_hdr_tooltip_countdown">1</string>
     <string name="lib_luma_dl_sabre_l3b_key">Off (as in library)</string>
     <string name="pref_expcomp_portrait_key">0</string>
-    <string name="lib_temporal_radius_key_p0_0">512</string>
+    <string name="lib_temporal_radius_key_p0_0">256 (Default)</string>
     <string name="lib_gr_key">-0.148</string>
     <string name="pref_fix_resolution_key">0</string>
     <string name="pref_awb_key_0">0</string>
@@ -361,7 +361,7 @@
     <string name="lib_zipper_2_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_l3_key"></string>
     <string name="pref_color_transform_key">0</string>
-    <string name="lib_volume_processing_key_p0_0">24.0 (*)</string>
+    <string name="lib_volume_processing_key_p0_0">29.0</string>
     <string name="lib_pref_noise_model_key">0</string>
     <string name="lib_pref_global_hue_key">0</string>
     <string name="pref_vffps_high_key">30</string>
@@ -383,7 +383,7 @@
     <string name="bs_r_key">1.0785347E-5</string>
     <string name="lib_hdr_effect_key">Off (as in library)</string>
     <string name="lib_luma_dm_sabre_l5a_key">Off (as in library)</string>
-    <string name="lib_shasta_max_exp_ms_key_p0_0">1000</string>
+    <string name="lib_shasta_max_exp_ms_key_p0_0">4000</string>
     <string name="lib_bg_key">-0.914</string>
     <string name="pref_gcam_version_key">9.2</string>
     <string name="pref_raw_res_key">0</string>
@@ -498,7 +498,7 @@
     <string name="pref_black_level_key">0</string>
     <string name="lib_sabre_sharp_tuning_l4_key"></string>
     <boolean name="camera.cheetah_long_enabled" value="true" />
-    <string name="lib_pref_metering_mode_key_p0_0">3</string>
+    <string name="lib_pref_metering_mode_key_p0_0">0</string>
     <string name="lib_luma_dm_sabre_l2a_key">Off (as in library)</string>
     <string name="pref_aux_front_key">0</string>
     <string name="bs_b_key">1.0785347E-5</string>
@@ -676,7 +676,7 @@
     <int name="gcam.psaf_frame_count" value="3" />
     <string name="lib_savannah_merge_key">Off (as in library)</string>
     <string name="lib_sharpen_default_vl_2_key"></string>
-    <string name="pref_metering_mode_key">3</string>
+    <string name="pref_metering_mode_key">0</string>
     <string name="lib_fixraw16merge_key">Off (as in library)</string>
     <string name="pref_photo_grayscale_key">0</string>
     <string name="lib_br_key">0.093</string>
@@ -777,7 +777,7 @@
     <string name="lib_sabre_sharp_tuning_details_l16_key"></string>
     <string name="lib_sharpen_default_vh_1a_key"></string>
     <string name="lib_sharpen_default_vh_3_key"></string>
-    <string name="lib_fix_shasta_merge_key_p0_0">-31 (*)</string>
+    <string name="lib_fix_shasta_merge_key_p0_0">Off (as in library)</string>
     <string name="info_sys_version_key">16</string>
     <string name="lib_tone_custom_key"></string>
     <string name="lib_sharp_distrib_2_key">Off (as in library)</string>
@@ -809,4 +809,30 @@
     <string name="pref_camera_advice_settings">1</string>
     <boolean name="camera.advice.dirtylens" value="true" />
     <boolean name="camera.catfish_enabled" value="true" />
+    <boolean name="camera.include_ultra_short_frame" value="true" />
+    <boolean name="camera.nonzsl_extended_base_frame_selection" value="true" />
+    <boolean name="camera.shasta.force" value="true" />
+    <int name="gcam.zsl_buffer_size" value="8" />
+    <int name="gcam.sabre_burst_size" value="15" />
+    <boolean name="camera.hdr_memory_reserve" value="true" />
+    <int name="gcam.hdrplus_wb_source" value="1" />
+    <boolean name="gcam.eager_simultaneous_merge_and_finish" value="true" />
+    <string name="lib_volume_processing_key_p0_1">29.0</string>
+    <string name="lib_volume_processing_key_p0_2">29.0</string>
+    <string name="lib_volume_processing_key_p0_3">29.0</string>
+    <string name="lib_fix_shasta_merge_key_p0_1">Off (as in library)</string>
+    <string name="lib_fix_shasta_merge_key_p0_2">Off (as in library)</string>
+    <string name="lib_fix_shasta_merge_key_p0_3">Off (as in library)</string>
+    <string name="lib_temporal_radius_key_p0_1">256 (Default)</string>
+    <string name="lib_temporal_radius_key_p0_2">256 (Default)</string>
+    <string name="lib_temporal_radius_key_p0_3">256 (Default)</string>
+    <string name="lib_savannah_merge_key_p0_1">1.125</string>
+    <string name="lib_savannah_merge_key_p0_2">1.125</string>
+    <string name="lib_savannah_merge_key_p0_3">1.125</string>
+    <string name="lib_max_exp_ms_key_p0_1">4000</string>
+    <string name="lib_max_exp_ms_key_p0_2">4000</string>
+    <string name="lib_max_exp_ms_key_p0_3">4000</string>
+    <string name="lib_shasta_max_exp_ms_key_p0_1">4000</string>
+    <string name="lib_shasta_max_exp_ms_key_p0_2">4000</string>
+    <string name="lib_shasta_max_exp_ms_key_p0_3">4000</string>
 </map>

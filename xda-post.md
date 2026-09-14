@@ -186,9 +186,17 @@ Mechanism notes for the curious: `lib_patch_profile_key` is the patch selector �
 
 Standard GCam-modding disclaimer: this is a modified proprietary Pixel Camera binary, shared for personal use on your own device, same as every other AGC/GCam build on XDA. Use at your own risk.
 
+
+### 🎛️ V2.1 update (Sept 13, later) — viewfinder AE fix: the `meteringMode` anchor
+
+One-pref fix for the "viewfinder takes exposure at open and never updates" complaint some of you will hit with imported configs: AGC stamps Samsung's vendor key `samsung.android.control.meteringMode` on **every** capture request on Samsung builds, reading it from `pref_metering_mode_key`. Configs built on the `fold5_best` lineage ship that as **`3`** — on the Fold 5's TsAe HAL that's trigger-style metering (converge once at open, park; only tap/zoom re-meters). The HAL was verified innocent first (continuous-AE OpMode, unlocked, no manual pin — Samsung's own `SS_3A` trace), then the vendor-tag dump caught `meteringMode: [3]` live in the request.
+
+**Fix:** set `pref_metering_mode_key` (and any `lib_pref_metering_mode_key_p0_0` / `_p1_0` per-slot copies) to **`0`** (matrix/continuous). All four configs in the release now ship 0 — pan-tested, the preview adapts both directions like stock. If you imported an older config: change the value in the app or re-import the new files.
+
 ---
 
 *Changelog:*
 
 - *V1 — initial Fold 5 release: Fix 1 (scanner NPE) + Fix 2 (front-cam gcam metadata rejection) on AGC9.2.14_V14.0_ruler base. All four lenses verified: 56/58/52/71.*
 - *V2 (2026-09-13) — no APK changes, configs + research only: full A/B tuning campaign (158-row log), Night Sight exposure bank (up to 4x light), 14 feature flags kept / 7 reverted / 3 camera-breakers identified, 7 lib scalars kept / 7 reverted, and GUI-selectable Day/Night profiles — now at picker rows 1/2 — plus the corrected profile-slot mechanism (Ka-row trap documented). Patch series in the repo: 0001–0005 (V1 launch fixes 0001/0002; v4.x burst work 0003; v4.3 front-cam gates 0004/0005).*
+- *V2.1 (2026-09-13) — viewfinder AE fix: pref_metering_mode_key 3→0 (Samsung vendor meteringMode trigger-style metering was anchoring preview exposure at open; configs rebaked, pan-verified both directions).*

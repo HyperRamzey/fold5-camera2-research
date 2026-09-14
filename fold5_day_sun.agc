@@ -20,6 +20,8 @@
     <string name="lib_sabre_sharp_tuning_details_l9_key"></string>
     <string name="pref_frame_count_ns_key">0</string>
     <string name="lib_pref_metering_mode_key">0</string>
+    <string name="lib_pref_metering_mode_key_p1_0">0</string>
+    <string name="pref_metering_mode_key">0</string>
     <set name="pref_all_camera_id_list_key">
         <string>0</string>
         <string>23</string>
@@ -68,7 +70,6 @@
     <int name="tooltip_impression_trigger_count_for_long_exposure_smarts_chip" value="2" />
     <string name="pref_raw_key">0</string>
     <string name="lib_sharp_depth_2_key">Off (as in library)</string>
-    <string name="lib_pref_metering_mode_key_p1_0">3</string>
     <string name="pref_awb_bg_coeff_key">1.0</string>
     <string name="lib_fine_spatial_min_2_key_p1_0">1.0 (Default)</string>
     <string name="pref_chameleon_control_key">0</string>
@@ -704,7 +705,6 @@
     <string name="lib_savannah_merge_key">Off (as in library)</string>
     <string name="lib_sharpen_default_vl_2_key"></string>
     <string name="lib_fine_spatial_max_2_key_p1_0">1.0 (Default)</string>
-    <string name="pref_metering_mode_key">3</string>
     <string name="lib_fixraw16merge_key">Off (as in library)</string>
     <string name="pref_photo_grayscale_key">1</string>
     <string name="lib_sabre_2_key_p1_0">100(default)</string>

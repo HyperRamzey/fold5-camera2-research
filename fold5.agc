@@ -36,6 +36,8 @@
     <string name="lib_sabre_sharp_tuning_details_l9_key"></string>
     <string name="pref_frame_count_ns_key">0</string>
     <string name="lib_pref_metering_mode_key">0</string>
+    <string name="lib_pref_metering_mode_key_p0_0">0</string>
+    <string name="pref_metering_mode_key">0</string>
     <set name="pref_all_camera_id_list_key">
         <string>23</string>
         <string>56</string>
@@ -168,7 +170,6 @@
     <string name="pref_black_level_key">0</string>
     <string name="pref_vid_prefix_key">VID_</string>
     <string name="lib_sabre_sharp_tuning_l4_key"></string>
-    <string name="lib_pref_metering_mode_key_p0_0">3</string>
     <string name="lib_luma_dm_sabre_l2a_key">Off (as in library)</string>
     <string name="pref_aux_front_key">0</string>
     <string name="bs_b_key">1.0785347E-5</string>
@@ -512,7 +513,6 @@
     <string name="lib_sharpen_default_vl_2_key"></string>
     <string name="pref_max_zoom_key">0</string>
     <string name="lib_sharpen_default_vl_1a_key"></string>
-    <string name="pref_metering_mode_key">3</string>
     <string name="pref_video_fps_4k_key">FPS_30</string>
     <string name="lib_fixraw16merge_key">Off (as in library)</string>
     <string name="lib_spatial_gain_map_2_key">Off (as in library)</string>

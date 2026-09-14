@@ -282,3 +282,15 @@ No APK changes — same v4.3.0 binary. What's new is a complete A/B tuning campa
 - **Day/Night profiles in the app's own GUI** — profile picker rows 1/2: "Day (sun)" (stock ceilings, fast daylight bursts) / "Night (full tune)" (the full tuned state). One-tap switching; also shippable as `.agc` config files (`fold5_day_sun.agc` / `fold5_night_full.agc` on the release). Do not use the built-in Ka rows (KaNight/KaDay RAM bundles are compiled for the stock tune — corrupt the merge on a tuned config)
 
 Dusk stable-light re-verify is the documented next step.
+
+## v5.0.1 — Viewfinder AE fix: `samsung.android.control.meteringMode` (2026-09-13)
+
+**The bug:** the viewfinder metered exposure once at camera open and never re-converged — pan from outside to inside and the preview went near-black; inside to outside and it blew out. Taps and zoom re-metered (which masked it as "locked AE"), scene changes did nothing.
+
+**The root cause — found by elimination, then proven A/B:** AGC's `createCaptureRequest` (smali: `AGC.smali` L447) stamps Samsung's vendor `samsung.android.control.meteringMode` key onto **every** request on Samsung builds, reading it from `AdvancedSettings.getMeteringMode()` → `pref_metering_mode_key`. The `fold5_best` lineage config shipped that pref as **`3`** — and the Fold 5's TsAe library (`libTsAe_q5.so`) treats mode 3 as trigger-style metering: converge once, park, re-meter only on tap/zoom/stream-rebuild. Confirmed live via `dumpsys media.camera` (vendor-tag section showed `meteringMode (81080007): [3]` in the in-flight request). The HAL itself was exonerated first — Samsung's own `SS_3A` AEC trace showed continuous-AE OpMode 1, AE unlocked, no manual pin.
+
+**The fix — one pref:** `pref_metering_mode_key` (and the `lib_pref_metering_mode_key_p0_0`/`_p1_0` per-slot copies) `3` → **`0`** (matrix/continuous). Verified in the live request (`meteringMode: [0]`), then user-pan-tested: outside→inside now adapts. All four shipped configs bake it in.
+
+**Also fixed this release:** the earlier "neutron-star" blown captures were separately caused by selecting the built-in KaNight RAM patch over the tuned config (already documented in v5.0.0 notes) — that contamination is volatile and cleared by force-stop; the metering pref was the persistent viewfinder anchor.
+
+Method note: every diagnostic step is logged in [`tuning/DECISIONS.md`](tuning/DECISIONS.md) — including the dead ends (viewfinder-effect phenotype flags are R8-stripped in this build; torch sysfs is HAL-owned and rejects writes; steady-state AEC re-metering emits no log lines).
