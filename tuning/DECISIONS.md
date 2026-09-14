@@ -783,3 +783,44 @@ DEHAZE FAMILY:
 BACKUPS this session: prefs_backup_pre_newscene_pkg, pre_contrast_leg, pre_gamma_leg,
 pre_wb_leg, pre_tone_leg, pre_v3. Night slot intact throughout (verified after every write).
 All safari legs end stripped (stock state confirmed 10:35).
+### PRESET MARATHON (11:45-12:20) — 11 curves tasted, brackets D/E/F/G:
+
+BATCH 1 (vs D/E stock band p5=54, p50=122, p95=233.5, chroma=13.63):
+  - GMM-X4 (t4): p5 -5%, p50 -4%, chroma flat — gentle film tilt
+  - GMM-X2 (t5): p5 -14%, p50 -11% — DEEPEST mood curve (darker than X10)
+  - Google8.6 (g8): near-stock reference curve (Google's own)
+  - HDR Quality (g10): chroma +27% (!), p50/p95 flat, floor -6% — second color-forward curve
+  - GMM-W8 (t15): +1% floor, chroma +6% — near-stock lift
+  - Flat (g13): truly neutral (the clean baseline curve)
+
+BATCH 2 (vs F/G stock band p5=54.5, p50=121, p95=227.5, chroma=14.47):
+  - Hassel bwpointfix v6 (g7): chroma +18%, p5 +1% FLAT, p95 +0.7% — THE FIXED HASSEL:
+    same color family as g6 but the black/white point fix REMOVES the shadow dip.
+    STRICTLY BETTER STACK with contrast_black (no longer fights the floor lift).
+  - HDR Quality tone variant (t22): chroma +5% — weaker than gamma sibling
+  - IQ (g12): chroma +16% but p95 -6% — color with ceiling cost, worse trade
+  - Odin (g14): chroma +5%, p95 -4.6% — mild dark tilt
+  - xhdrv2 (t37): luma 129->83 BLACKOUT curve (like contrast_1 -1.0) — dead for package
+
+### PACKAGE UPGRADE v3 -> v3.1: gamma 6 -> 7 (Hassel bwpointfix v6)
+  Rationale: g6's -8% floor dip fought CB's +12% lift (net +12.6% measured); g7 floor-flat
+  means CB works unopposed -> net floor should exceed v3's, chroma ~+24% total (closer to
+  LO's "15% maybe" spec than g6's +32%). Standing package swapped + verify shot fired.
+### V3.1 TRUE SANDWICH (12:36-12:40) — final Day package evidence:
+
+LABELING CORRECTION: marathon bracket stocks (D/E/F/G 11:27-12:20) were actually the
+standing trio (sat+CB+sharp) active — never fully stripped after the 10:41 standing install.
+All marathon readings are preset-marginals-on-package, valid for preset SELECTION, not
+vs-true-stock absolutes. Caught when the v3.1 gamma swap sed silently failed (gamma 6
+was already stripped) — traced back, corrected with a TRUE sandwich (zero p0 keys verified).
+
+TRUE V3.1 SANDWICH (A stock 12:36 / B v3.1 12:38 / C stock 12:40, ISO stable):
+  v3.1 = sat 1.15 + CB 0.50 + gamma 7 (Hassel bwpointfix v6) + sharp 0.6
+  - floor: p5 +13% (48.5->55), p10 +7.7%, shadowMean +10.2% — CB unopposed, best yet
+  - ceiling: p95 +1.3% (228->231) — PARKED per LO directive
+  - chroma: +33% (12.13->16.14) — color-forward interpretation
+  - sharpEnergy: +136% (7.25->17.1)
+  V2-vs-V3.1 for LO: v2 (sat+CB only) = the "like 15% maybe" spec-exact package; v3.1 =
+  color-forward + crisp. One sed apart, both verified, his eyes decide.
+
+Standing package re-armed as v3.1 after the sandwich. Night slot untouched throughout.
