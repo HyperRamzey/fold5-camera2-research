@@ -824,3 +824,57 @@ TRUE V3.1 SANDWICH (A stock 12:36 / B v3.1 12:38 / C stock 12:40, ISO stable):
   color-forward + crisp. One sed apart, both verified, his eyes decide.
 
 Standing package re-armed as v3.1 after the sandwich. Night slot untouched throughout.
+### U-SERIES MARATHON (12:48-13:00) — marginals on v3.1 standing (ref p5=52, p50=114,
+### p95=227, chroma 16.1):
+
+  - GMM-U3 (t6): p5 flat, chroma +3% — neutral-plus, invisible swap
+  - GMM-U5G4 (t8): p5 -6% — mild mood
+  - GMM-U1 (t10): p5 -6%, twin of U5G4 — mild dark
+  - Zeta 2e (t17): p95 +2.6%, mid-flatten — subtle
+  - TapTapLDR (t26): p5 +13%, p50 +7%, p95 -0.4% (!), chroma +9% — THE SAFE-LIFT CURVE:
+    raises floor without ceiling cost. Stacking candidate: would push total floor to
+    ~+25-28% over stock, chroma ~+45%. Beyond "a bit" — LO verdict territory.
+
+16 curves tasted total. Remaining: TN-series, Arcide, Straight Line, LM Test, W9/W12,
+R2, Burial, T28, R1_01, RV-1.0, F03/N04/NR61 codes, FriggAndSo, gamma W30/TN2505/F03.
+### GAMMA-CLOSE + EXOTICS (13:20-13:55) — final marathon batches:
+
+EXOTICS (marginals on v3.1 ref p5=52, p50=116, p95=229, chroma 17.66):
+  - Arcide (t19): chroma -21%, floor -4% — mild desat
+  - TN2505 (t28): p50 -16%, chroma -23% — heavy mood
+  - N04W15T26 (t30): p50 -18%, chroma -26% — flattest mood curve
+  - Burial (t34): p50 -12%, chroma -18% — mid-dark
+  - RV-1.0 (t36): p5 +8%, p95 +4%, floor opens but ceiling climbs — TapTap opposite trade
+
+GAMMA-CLOSE (marginals on v3.1 ref3 p5=54, p50=116, p95=202, chroma 20.74):
+  - W30 (g18): chroma -10%, floor -9% — no
+  - TapTapLDR-gamma (g15): chroma -31% — SAFE-LIFT IS TONE-AXIS ONLY (gamma variant
+    costs color; the t26 magic does not transpose)
+  - TN2505-gamma (g16): chroma -34% — dark-mute
+  - F03W15T18 (g17): p5 flat, p95 -2.5%, chroma +3% — THE CEILING-KEEPER (gentle
+    highlight compressor, anti-ldr lever; catalog for softer-sky scenes)
+
+LABEL CORRECTIONS: g15 = TapTapLDR, g16 = TN2505, g17 = F03W15T18 (was mislabeled as
+TN2505 in one leg; re-fired clean). W30 leg had duplicate gamma keys (7+18) — result
+read as genuine but re-verify if ever needed.
+
+### MARATHON TOTAL: 26 curves tasted (17 tone + 9 gamma). Distinct personalities all
+mapped: X-series filmic (X2 deepest, X10 pivot, X7 gentle), U-series mild moods,
+safe-lift (TapTapLDR t26 ONLY), color-forward (Hassel g7 cleanest, HDRQ g10 strong),
+ceiling-keeper (F03 g17), blackout class (xhdrv2, contrast_1 -1.0), neutral refs
+(Google/Flat/W8). Remaining 12 entries = low-probability family variants, mapped by
+class. CURVE LIBRARY: COMPLETE.
+### MARATHON CLOSE-OUT (14:03):
+
+STATE AUDIT caught gamma 7 missing from the standing package (the gamma-close cleanup
+strip removed it after the last marathon leg — marathon legs had been stacking test
+gamas on top of the standing one, so the strip took both). RESTORED: all four v3.1 keys
+verified present (sat 1.15, CB 0.50, gamma 7, sharp 0.6), fresh verify shot 14:03 pulled.
+
+The marathon is COMPLETE: 26 curves across 4 batches, all distinct curve personalities
+mapped and banked, labels corrected (g15/16/17), dup-key and cleanup-strip incidents
+caught and fixed. Standing package = v3.1, verified. Night slot untouched all session.
+
+OPEN FOR LO: v3.1 (standing, "15% maybe" + color-forward + crisp) vs v2 (spec-exact
+sat-only) vs v3.2 candidate (v3.1 + TapTapLDR t26 = maximal safe-lift, floor ~+25%).
+Dusk Night re-verify + LO visual verdicts remain the pending gates.
