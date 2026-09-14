@@ -1034,3 +1034,66 @@ Remaining untasted: 24 more sensor matrices (Mod 1, oil paintings, Transparent, 
 — same double-gate pattern, one sed each, swap-in looks.
 
 Session state: v3.1 standing restored at close (transform keys stripped after tests).
+
+### NEW-SCENE SANDWICH (18:15-18:49) — v3.1 RE-VERIFIED, gamma 7 restored
+
+The phone was MOVED — new scene. Full drift-corrected sandwich with EXIF ISO ladder:
+
+- STOCK-A (18:15, ISO 195): luma 118.8, chroma 11.06, p5=40, p50=107, p95=229, shMean 51.5, R/B 0.915
+- V31-B  (18:20, ISO 249): luma 121.0, chroma 14.72, p5=44, p50=108, p95=237, shMean 55.6, R/B 0.891
+- V31-B2 (18:45, ISO 432): luma 106.4, chroma 25.15, p5=36, p50=91, p95=223, shMean 45.2, R/B 0.796
+- STOCK-C (18:49, ISO 505): luma 96.6, chroma 22.01, p5=23, p50=80, p95=215, shMean 33.4, R/B 0.803
+
+B2/C tight bracket (4-min, ISO 432->505, drift-controlled): v3.1 vs stock =
+chroma +14%, p5 floor +57%, shMean +35%, p95 +3.7%, channel balance flat (R/B 0.796 vs 0.803).
+A/B bright bracket (ISO 195->249) agrees: chroma +33%, p5 +10%, p95 +3.5%.
+Golden hour dying mid-sandwich (ISO ladder 195->505 in 34 min) — the two brackets each
+self-consistent; cross-bracket absolute drift handled by per-bracket ratios.
+
+NEW PACKAGE SIGNATURE: ceiling is +3.5-3.7% LIFTED, not flat. The old-scene "ceiling parked"
+read belonged to the gamma-less package (see correction below). v3.1-with-gamma7 carries a
+gentle top-end lift (~+3.5%) plus a much stronger shadow floor in dim light (+57% at ISO 432
+vs +10% in bright). Highlights directive note for LO: sat 1.15 + CB 0.50 + gamma 7 + sharp
+0.6 lifts p95 ~3.5% — if "highlights untouched" means p95 flat, gamma 7 is the lever to revisit
+(his call; the +3.5% is mild and was part of his sandwich-approved look).
+
+### GAMMA-7 LABEL CORRECTION (state audit finding)
+
+Batch-E cleanup (15:15, becln) ran "sed /lib_gamma_key_p0_0/d" which stripped the PACKAGE
+gamma 7 along with the test gamma — every shot labeled "v3.1" from 15:15 to 17:18 (refs 8-9,
+quad stack, transform series, first matrix batch) actually ran v3.1-minus-gamma. All those
+marginals remain valid (internally consistent base — every leg AND its adjacent ref shared the
+same gamma-less package), but the "v3.1" designation was inaccurate for that window. Fixed on
+device at 18:20 (sandwich leg B); verified by direct grep + NIGHT-IDENTICAL diff.
+
+### PRE-PAUSE MATRIX READS (banked, old-scene window 17:04-17:18, base = gates-on, v3.1-no-gamma)
+
+vs FRESHREF 17:04 (chroma 11.32, R/B 0.924):
+
+- OV48C-15 (17:09): chroma 12.55 (+11%), R/B 0.921 — mild color-lean, near-neutral
+- K30PRO-16 (17:13): chroma 15.21 (+34%), R/B 0.887 — COOL-CAST COLOR-POWER (new personality:
+  the cool opposite of Arcide's warmth)
+- IMX682-18 (17:18): chroma 11.23, R/B 0.923 — neutral/dead
+Matrix tally: 11 of 31 tasted. Remaining untasted: 1,2,3,9,10,11,12,13,17,20,21,22,23,24,25,26,27,28,29,30,31.
+
+### PROCESS NOTES
+
+- Leg-C first attempt discarded (18:45 shot AGC_20260914_184609686.jpg): sh split the
+  semicolon sed chain, verify gate caught it, shot was actually v3.1-armed — REUSED as B2
+  (valid second package shot, tighter bracket with C than B itself).
+- ISO EXIF parse fixed: PropertyItem 34855 is SHORT little-endian ([BitConverter]::ToUInt16).
+- Cycle scripts now written as .ps1 files (tune\legC.ps1 etc.) after transport quote-mangling
+  caused three parse failures; on-device sh uses quoted per-key sed lines (bulletproof).
+- Night slot verified byte-identical three times this session (16:02 backup, pre-sandwich,
+  post-re-arm).
+- On-device backups: prefs_backup_pre_sandwich_1800.xml, prefs_backup_sandwichC.xml,
+  prefs_backup_rearm_v31.xml.
+
+### LIGHT-GATE STATUS (blocked-stop condition for Day measurements)
+
+Device ~18:55, ISO ladder already 505 at 18:49 and climbing — golden hour exhausted. The
+remaining Day-slot inventory (21 matrices, hue rack, satcct b/y/c, custom 3x3 cells, wb
+chain) is light-gated: firing legs now would produce non-representative Day measurements.
+Standing state: v3.1 armed + verified on new scene, Night untouched, all test keys stripped.
+Resume the mow at next daylight window.
+
