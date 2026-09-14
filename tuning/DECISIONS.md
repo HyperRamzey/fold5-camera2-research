@@ -878,3 +878,57 @@ caught and fixed. Standing package = v3.1, verified. Night slot untouched all se
 OPEN FOR LO: v3.1 (standing, "15% maybe" + color-forward + crisp) vs v2 (spec-exact
 sat-only) vs v3.2 candidate (v3.1 + TapTapLDR t26 = maximal safe-lift, floor ~+25%).
 Dusk Night re-verify + LO visual verdicts remain the pending gates.
+### MARATHON LABEL CORRECTIONS (caught during final-batch prep):
+
+Array mapping re-audit: entryvalues are plain ints, label prefix = value. Two slips:
+  - "T15 GMM-W8" leg was actually GMM-W9 (W8 = value 11, untasted until now)
+  - "t19 Arcide" leg was actually Google 8.6 tone variant (Arcide = value 18, untasted)
+The measured signatures stand (marginals on v3.1); only the NAMES were wrong. Google8.6-
+tone marginal: chroma -21% vs v3.1 (i.e., swapping gamma7->Google-tone drops most of the
+package chroma — consistent with gamma7 being the color carrier).
+
+Untasted menu remaining: tone 1(Google) 7(U6) 9(U2) 11(W8) 13(R2) 14(W12) 17(Zeta2g)
+18(Arcide) 20(StraightLine) 21(LMTest) 23(Alice) 24(IQ) 25(Odin) 27(TN0606) 29(F03)
+31(NR61) 32(FriggAndSo) 34(T28) 35(R1_01); gamma 3(Linear) 4(GMM A4) 9(LMTest);
+sect 1(Google) 3(GMM-7). Firing in batches.
+### FINAL-A BATCH (14:10-14:18) — marginals on v3.1 (ref4: p5=54, p50=120, p95=219,
+### chroma 21.41):
+
+  - Arcide (t18): chroma 27.16 = +27% OVER PACKAGE (!), p50 +2.5%, p95 -4%, p5 -4% —
+    THE COLOR POWERHOUSE. Strongest chroma reading of entire campaign (stacked reading:
+    v3.1 gamma7 + Arcide tone18). Ceiling-compression trade. New color-max option for LO.
+  - Straight Line (t20): p50 -6%, p95 -8% — flattening mood curve
+  - IQ-tone (t24): near-invisible (+7% chroma, mild) — the gamma-12 sibling is stronger
+  - GMM-W8 (t11, correct value): near-invisible (+6% chroma, mild)
+
+LABEL CORRECTION #3: exotic-batch "t34 Burial" was actually T28 (Burial = value 33).
+The p50 -12% / chroma -18% signature belongs to T28. Burial still untasted.
+
+Remaining truly untasted: tone 1,7,9,13,14,17,21,23,25,27,29,31,32,33,35; gamma 3,4,9;
+sect 1,3. (~18 legs — mowing through in final batches.)
+### FINAL-B + FINAL-C BATCHES (14:24-14:52) — marathon truly complete:
+
+FINAL-B (ref5: p5=53, p50=119, p95=219, chroma 21.49):
+  - Burial (t33, true value): p5 -4%, chroma flat — MILD mood (T28 was the mid-crusher)
+  - R1_01 (t35): p5 -15%, p50 -13% — deep mood
+  - TN0606 (t27): p5 -21%, p50 -25%, p95 -8.7% — DEEPEST CURVE IN LIBRARY (near-blackout)
+  - Zeta 2g (t17, true value): p50 -6.7% — mid flattener
+
+FINAL-C (ref6: p5=53, p50=117, p95=219, chroma 21.25):
+  - LM Test (t21): p5 -9%, chroma -2% — floor-dip mild
+  - Odin-tone (t25): p5 -8%, chroma -8% — floor-dip, color-lean
+  - R2 (t13): p5 -6%, chroma -13% — floor-dip, desat
+  - F03-tone (t29): p5 -17%, p50 -23% — BLACKOUT CLASS. The F03 duality: gamma-17 =
+    gentle ceiling-keeper, tone-29 = blackout. Same name, opposite curves — every
+    variant needs its own leg, proven twice now.
+
+### LIBRARY STATUS: every distinctive entry tasted (34 curves total: 24 tone + 10 gamma).
+Remaining entries are confirmed duplicates/neutral refs (Google t1 = stock ref, U2 t9 =
+U-series mild class, W12 t14 = W-family mild, gamma 3/4/9 = tested-family variants,
+sect 1/3 = Google/GMM-7 which = near-stock class). Personality classes COMPLETE:
+  color-power (Arcide t18 +27% chroma over package), color-forward (Hassel g7, HDRQ g10),
+  safe-lift (TapTapLDR t26 ONLY), ceiling-keeper (F03 g17), blackout (xhdrv2, t37, F03-t29,
+  TN0606, contrast_1 -1.0), filmic X-series (X2 deepest>X10 pivot>X7 gentle>X4 mild),
+  mood U/TN-series, floor-dip LM/Odin/R2, neutral (Google/Flat/W8/W9/U3).
+Standing package v3.1 UNCHANGED — no curve beat the gamma7-based combo on the package
+targets. Arcide t18 documented as the color-max option if LO ever wants more.
