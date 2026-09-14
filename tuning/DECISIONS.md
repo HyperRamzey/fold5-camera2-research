@@ -1002,3 +1002,35 @@ by direct measurement across: all curves (60), all look levers, toggle families,
 point anchors, coeff chains (gated patterns mapped), sharpness rack, HDR capture
 knobs, sun/sky toggles, jpg quality, curve-stacking composition (sub-additive,
 proven), quad color stack (destructive interference, proven).
+### TRANSFORM SERIES (16:02-16:06):
+
+  - Gated ref (v3.1 + enable_color 1): chroma 13.85 — the enable_color gate alone is
+    ~neutral on this scene (matches earlier EN_ONLY finding).
+  - Leica B&W (transform 7, integer value per entryvalues array): chroma 15.2, R/B
+    distinct — DID NOT ENGAGE. No monochrome collapse. Either needs lib_enable_cct_key
+    (the second ManagedSwitchPreference directly above the transform ListPreference in
+    the pref tree) or dead in Photo mode. Checking dependency attr, then firing the
+    double-gated leg.
+### TRANSFORM VAULT CRACKED (16:02-16:35) — the double-gate discovery + full personality map:
+
+GATE ARCHITECTURE (from pref XML dependency chain):
+  lib_pref_color_transform_key depends on lib_enable_cct_key depends on lib_enable_color_key
+  => BOTH switches must be 1 for transforms to engage. Single-gate = inert (proven:
+  Leica x1gate = no effect; x2gate = full remap). Third gated family mapped.
+
+PERSONALITY MAP (all vs gated ref 16:02: chroma 13.85, R/B 0.908):
+  - Arnova (4): chroma 0.48, R=G=B=129.3 — TRUE MONOCHROME (-97%). The only real B&W.
+  - "Black and White" (6): chroma 28.49 (!!), R/B 1.276 — LOUDEST COLOR IN CAMPAIGN
+    (+106% over ref). Extreme warm-orange remap. The naming in this port is INVERTED.
+  - "Leica B&W" (7): chroma 20.0, R/B 1.18 — warm-red remap, NOT mono.
+  - Mono Brown (8): chroma 11.26, R/B 1.054 — mild warm-tint desat (closest to label).
+  - IMX989 (14): near-neutral sensor cal (chroma 14.96, R/B 0.896).
+  - LG V50 (19): gentle desat, slight warm (chroma 10.89, R/B 0.946).
+
+CANDIDATE CLASS: transform 6 on v3.1 = the color-max option (+106% chroma, warm-orange
+shift). Transform 4 = instant-B&W mode (art lever). LO's call on both.
+Remaining untasted: 24 more sensor matrices (Mod 1, oil paintings, Transparent, the
+100-010-001, K30/MiNote/IMX682/LG-Wide/IMX355/471/OV5675/GW3/HM2/HMX/IMX598/3l6/JN1/766)
+— same double-gate pattern, one sed each, swap-in looks.
+
+Session state: v3.1 standing restored at close (transform keys stripped after tests).
