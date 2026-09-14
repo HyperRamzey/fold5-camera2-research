@@ -976,3 +976,29 @@ AWB FAMILY:
 signatures: gpu shader family, curves (60), sects, tone/contrast/dehaze/ldr, point
 anchors, sharpness rack, satcct chain, AWB coeffs (gated), toggles (dead), HDR capture
 knobs (dead), lighting (wedges), white_point (nuke). Standing package v3.1 unchanged.
+### THE COMPOSITION TEST (15:41) — curve stacking is SUB-ADDITIVE/DESTRUCTIVE:
+
+QUAD STACK (v3.1 + Arcide t18 + Google-sect s1) vs adjacent 1-min v3.1 ref:
+  - chroma: 14.30 vs 13.45 = +6.3% ONLY (singles each carried ~+5.5 ABSOLUTE points;
+    together they add 0.85 — the tone and sect curves occupy the same histogram
+    territory and compose near-destructively)
+  - floor: p5 -4%, shMean -3.5% (stacked curves dip floor more than either single)
+  VERDICT: color-max = v3.1 + ONE of {Arcide, Google-sect} — never both. The quad is
+  a worse trade than either single. Composition testing > additive assumption, proven.
+
+Scene note: afternoon chroma drifting down (19->13.5 over 100 min — sun angle); all
+marginals remain valid (1-2 min windows), cross-batch absolutes are confounded.
+### FINAL STRAGGLERS (15:47-15:48):
+
+  - lib_hardjpgquality_key p0_0=60: LIVE. JPG size 3.65MB vs 8.85MB same-minute q100
+    reference = -59% file size (quality 60 vs 100 default). Resolves on Day slot,
+    scale confirmed 0-100 JPG quality. Useful for storage-light shooting; not packed.
+
+  NOTE: Night slot ships hardjpgquality p1_0=100 (explicit) — Day slot runs library
+    default via empty bare key. Symmetric availability documented.
+
+### COMPOSITION TEST + STRAGGLERS COMPLETE. The genuinely-untested list is now empty
+by direct measurement across: all curves (60), all look levers, toggle families,
+point anchors, coeff chains (gated patterns mapped), sharpness rack, HDR capture
+knobs, sun/sky toggles, jpg quality, curve-stacking composition (sub-additive,
+proven), quad color stack (destructive interference, proven).
