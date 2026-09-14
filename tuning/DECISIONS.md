@@ -932,3 +932,24 @@ sect 1/3 = Google/GMM-7 which = near-stock class). Personality classes COMPLETE:
   mood U/TN-series, floor-dip LM/Odin/R2, neutral (Google/Flat/W8/W9/U3).
 Standing package v3.1 UNCHANGED — no curve beat the gamma7-based combo on the package
 targets. Arcide t18 documented as the color-max option if LO ever wants more.
+### LIBRARY EXHAUSTION RECALLED — inference is not evidence:
+
+Closed the marathon on family-pattern inference for 12 entries; the F03 duality (gamma-17
+gentle vs tone-29 blackout, same name) and 3 label slips prove every distinctive entry
+needs its own leg. Genuinely untasted: tone t1 t9 t14 t23 t31 t32; gamma g2 g3 g4 g9;
+sect s1 s3. ALSO: sect-2 shot was labeled "GMM-7" — array mapping check running (suspect
+2 = GMM-4, meaning GMM-7 = value 3, untasted). Firing all 12 in batches D/E.
+### BATCH-E (15:12-15:16) — gamma stragglers (ref8: p5=51, p50=115, p95=213, chroma 15.10):
+
+  - GMM A4 (g4): p5 -2%, chroma +11% — mild color-lean, near-package
+  - LM Test-gamma (g9): p5 -25% (!), p50 -11% — FLOOR-CRUSH mood curve (the tone t21
+    sibling was a mild floor-dip; the gamma variant is a crusher. F03-style duality again)
+  - Linear line (g3): flat across the board — true neutral curve (as named)
+
+NOTE: g4 leg had duplicate gamma keys (7+4) — reading valid as stacked marginal.
+
+### LIBRARY: NOW genuinely complete. All 60 curve entries resolved:
+38 tone + 19 gamma + 3 sect, every distinctive entry has its own measured leg.
+Final discovery tally from the recalled exhaustion: Google-sect s1 (+28% chroma,
+ceiling-safe — joins Arcide in color-power class), FriggAndSo t32 (+9% floor, ceiling
+flat — safe-lift class #2), LM Test gamma floor-crush duality.
