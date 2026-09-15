@@ -1151,3 +1151,36 @@ ladders + noise estimates. Knob inventory mow follows the same loud-test/adjacen
 view-tree ids via `dumpsys activity top` (bounds are container-relative, screen = container offset
 + bounds). Screen lock outruns dumps - keep cycles atomic. .ps1 files for all device scripts
 (quote-mangling discipline); smali patch scripts write UTF-8 no-BOM LF-normalized.
+
+### NS QUICK-MENU GRAY-OUT - ROOT-CAUSED AND PATCHED (v6.8-nsunlock)
+
+**LO's report (precise):** bottom-left moon + "1s" chip opens the quick-controls sheet;
+White balance (works), Exposure (works), Night Sight row GRAYED. Tap does nothing.
+Distinct from the earlier config-gear panel (that was the v6.7 crash fix).
+
+**Root cause chain (fully traced through minified smali):**
+- Moon chip desc "Night sight off {N seconds}" + "Control panel expanded" bottom-left opens
+  the manual_control_panel bottom sheet (Reset all / Night Sight / Exposure / White balance).
+- Panel item enable gate: hok.i() binder - item type hnl.o (Night Sight) in hok.f exclusion set
+  -> setEnabled(false) + "disabled large screen" tag -> grayed.
+- hnf.m(Z) is the NS enable/disable switch: m(false) adds hnl.o to the set, m(true) removes.
+- Only caller: heg dispatcher case 19 (heg id 0x13), wired in hnf ctor from property hnf.L
+  (factory hng param 27 <- DI hdg). On this port the upstream observable emits false always
+  -> NS row permanently grayed. (Same class of Pixel-hardware gate as the jsc.h abort, but
+  this one only disables a UI item - no crash, so it survived v6.7 undetected.)
+
+**Fix (smali surgery #2):** hnf.m(Z) rewritten - the add-branch removed; Set.remove(hnl.o)
+runs unconditionally. NS panel item always enabled. Original backed up:
+tune\backups\hnf.smali.orig-v67. v6.8 carries BOTH patches (jsc.h generic-class + hnf.m unlock).
+
+**Build:** AGC9.2.14_v6.8-nsunlock.apk (md5 0c597cfb32c7f8fff515c7369345f6f4), same debug key
+(cert SHA-256 618804ba... verified pre-install), install -r, prefs backup
+prefs_backup_pre_v68.xml. All tunes verified intact across installs (Day v3.1 + Night jewels
++ 47 p1_0).
+
+**Live verification (05:39):** NS entered, moon chip tapped, menu dumped:
+Reset all ENABLED, Night Sight ENABLED (was disabled), Exposure ENABLED, White balance
+ENABLED. Crash buffer empty, pid alive. LO visual acceptance pending.
+
+**Standing state:** v6.8-nsunlock installed. Night 2x/2x tuning mow queued next (per goal):
+frame_count_ns 25->50, max_exp_ms 8000->16000, ISO 3200, sabre/shasta rack.
