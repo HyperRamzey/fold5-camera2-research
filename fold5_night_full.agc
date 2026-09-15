@@ -4,8 +4,8 @@
     <string name="lib_sabre_sharp_2_key">Off (as in library)</string>
     <string name="pref_hot_pixel_key">2</string>
     <string name="pref_double_tap_key">zoom</string>
-    <string name="lib_lighting_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_radius_l2_key"></string>
+    <string name="lib_lighting_key">Off (as in library)</string>
     <string name="pref_qjpg_key">100</string>
     <string name="lib_sharp_depth_1_key">Off (as in library)</string>
     <string name="lib_max_bracketed_tet_ratio_key"></string>
@@ -17,11 +17,10 @@
     <string name="lib_pref_red_coeff_key">1.0</string>
     <string name="lib_luma_dm_sabre_l2_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_radius_l13_key"></string>
-    <string name="lib_sabre_sharp_tuning_details_l9_key"></string>
     <string name="pref_frame_count_ns_key">0</string>
+    <string name="lib_sabre_sharp_tuning_details_l9_key"></string>
     <string name="lib_pref_metering_mode_key">0</string>
-    <string name="lib_pref_metering_mode_key_p1_0">0</string>
-    <string name="pref_metering_mode_key">0</string>
+    <string name="pref_manual_focus_far_key">0</string>
     <set name="pref_all_camera_id_list_key">
         <string>0</string>
         <string>23</string>
@@ -36,7 +35,6 @@
         <string>20</string>
         <string>21</string>
     </set>
-    <string name="pref_manual_focus_far_key">0</string>
     <string name="lib_merge23_luma_dl_sabre_l3a_key">Off (as in library)</string>
     <string name="lib_merge23_luma_dh_sabre_l1b_key">Off (as in library)</string>
     <string name="lib_luma_dl_sabre_l3_key">Off (as in library)</string>
@@ -45,8 +43,8 @@
     <string name="pref_camera_hdrplus_option_available_key">1</string>
     <string name="lib_pref_blue_coeff_key">1.0</string>
     <string name="pref_slow8x_key">0</string>
-    <string name="lib_luma_dh_sabre_l3b_key">Off (as in library)</string>
     <string name="pref_awb_key">0</string>
+    <string name="lib_luma_dh_sabre_l3b_key">Off (as in library)</string>
     <string name="lib_luma_dh_sabre_l5_key">Off (as in library)</string>
     <string name="lib_merge23_luma_dm_sabre_l3a_key">Off (as in library)</string>
     <string name="pref_r_hue_key">0</string>
@@ -65,11 +63,12 @@
     <int name="max_hdr_plus_burst_frame_count" value="25" />
     <string name="lib_sharp_gain_macro_key"></string>
     <boolean name="camcorder.fb_preview_1080p60fps" value="true" />
-    <string name="info_board_key">kalama</string>
     <string name="lib_luma_denoise_new_b_key"></string>
-    <int name="tooltip_impression_trigger_count_for_long_exposure_smarts_chip" value="2" />
+    <string name="info_board_key">kalama</string>
+    <int name="tooltip_impression_trigger_count_for_long_exposure_smarts_chip" value="0" />
     <string name="pref_raw_key">0</string>
     <string name="lib_sharp_depth_2_key">Off (as in library)</string>
+    <string name="lib_pref_metering_mode_key_p1_0">0</string>
     <string name="pref_awb_bg_coeff_key">1.0</string>
     <string name="lib_fine_spatial_min_2_key_p1_0">1.0 (Default)</string>
     <string name="pref_chameleon_control_key">0</string>
@@ -90,8 +89,8 @@
     <string name="lib_sharp_gain_micro_key"></string>
     <boolean name="camcorder.stokes_mra" value="true" />
     <boolean name="SABRE_ALLOWED" value="true" />
-    <string name="pref_camera_raw_output_option_available_key">0</string>
     <string name="lib_smoothing_new_key">Off (as in library)</string>
+    <string name="pref_camera_raw_output_option_available_key">0</string>
     <string name="lib_luma_dh_sabre_l3a_key">Off (as in library)</string>
     <string name="lib_sharp_big_key">Off (as in library)</string>
     <string name="lib_merge23_luma_dl_sabre_l3b_key">Off (as in library)</string>
@@ -146,8 +145,8 @@
     <string name="pref_config_nickname_key">sanjxz</string>
     <string name="lib_sharpness_a_key"></string>
     <string name="lib_gpu_rgb_blue_key">0</string>
-    <string name="lib_shastaforce_key">Off (as in library)</string>
     <string name="pref_frame_count_key">0</string>
+    <string name="lib_shastaforce_key">Off (as in library)</string>
     <string name="lib_pref_frame_count_ns_key">0</string>
     <boolean name="camera.enable_gasd_metadata" value="true" />
     <string name="lib_with_tet_mismatch_key">Off (as in library)</string>
@@ -164,8 +163,8 @@
     <string name="lib_hdr_range_minus_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_details_l11_key"></string>
     <string name="pref_frame_count_astro_key">0</string>
-    <boolean name="camera.decepticon_enabled" value="true" />
     <string name="pref_check_hal_update_after_gca_version">67152686</string>
+    <boolean name="camera.decepticon_enabled" value="true" />
     <string name="lib_hdr_sabre_calc_val_2_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_details_l12_key"></string>
     <string name="lib_sabre_brigthtness_key">Off (as in library)</string>
@@ -174,8 +173,8 @@
     <string name="panorama_upgrade_version">1</string>
     <string name="lib_sabre_3_key_p1_0">15</string>
     <boolean name="camcorder.stokes_dyn" value="true" />
-    <string name="lib_sharpen_default_vh_2a_key"></string>
     <string name="pref_antibanding_key">3</string>
+    <string name="lib_sharpen_default_vh_2a_key"></string>
     <string name="black_level_3_key">64.0</string>
     <string name="lib_pref_awb_key">0</string>
     <string name="lib_brightness_key"></string>
@@ -196,11 +195,11 @@
     <string name="lib_iso_key"></string>
     <string name="pref_device_key_0">29</string>
     <string name="lib_sabre_denoise_control_key">Off (as in library)</string>
-    <string name="lib_luma_dm_sabre_l4a_key">Off (as in library)</string>
     <string name="pref_device_key_3">0</string>
+    <string name="lib_luma_dm_sabre_l4a_key">Off (as in library)</string>
     <string name="lib_profile_title_key_p0_0">Day (sun)</string>
-    <string name="lib_shadows_key">Off (as in library)</string>
     <string name="lib_denoise_key"></string>
+    <string name="lib_shadows_key">Off (as in library)</string>
     <string name="pref_update_available_chip_dismissal_times">0</string>
     <string name="lib_sabre_sharp_tuning_radius_l15_key"></string>
     <string name="pref_manual_opmode_video_key">0</string>
@@ -209,8 +208,8 @@
     <string name="pref_social_app_com_google_android_youtube">1</string>
     <string name="lib_luma_dh_sabre_l4_key">Off (as in library)</string>
     <string name="pref_black_level_dynamic_key">0</string>
-    <string name="as_b_key">4.9889366E-7</string>
     <string name="pref_frame_count_zsl_key_0">30</string>
+    <string name="as_b_key">4.9889366E-7</string>
     <string name="lib_pref_upscale_key">0</string>
     <boolean name="camcorder.amethyst_opt" value="true" />
     <string name="lib_dissimilar_psl_frames_for_nightsight_key_p1_0">0</string>
@@ -262,13 +261,13 @@
     <string name="bg_key">-0.914</string>
     <string name="pref_upscale_key">0</string>
     <string name="lib_sabre_sharp_tuning_l1_key"></string>
-    <string name="lib_gpu_rgb_green_key">0</string>
     <string name="pref_g_hue_key">0</string>
-    <boolean name="camcorder.amethyst" value="true" />
+    <string name="lib_gpu_rgb_green_key">0</string>
     <string name="lib_smoothing_temporal_key_p1_0">-1.00 (Default)</string>
+    <boolean name="camcorder.amethyst" value="true" />
     <string name="lib_hdr_range_limit_2_key">Off (as in library)</string>
-    <string name="pref_opmode_video_key">0</string>
     <string name="pref_has_set_social_share_apps">1</string>
+    <string name="pref_opmode_video_key">0</string>
     <boolean name="camera.enable_taxi" value="true" />
     <boolean name="pref_awb_switch_key" value="false" />
     <string name="pref_upgrade_version">27</string>
@@ -316,8 +315,8 @@
     <string name="lib_exposure_darker_2_key"></string>
     <boolean name="camera.enable_saturn" value="true" />
     <string name="lib_sabre_sharp_tuning_radius_l11_key"></string>
-    <string name="lib_white_point_key"></string>
     <string name="lib_sharpen_default_l_3a_key"></string>
+    <string name="lib_white_point_key"></string>
     <string name="rr_key">1.679</string>
     <boolean name="camcorder.codec_sm" value="true" />
     <string name="lib_raisr_small_key">Off (as in library)</string>
@@ -329,8 +328,8 @@
     <string name="lib_portrait_relighting_option_key">Off (as in library)</string>
     <string name="lib_shot_noise_factor_key">Off (as in library)</string>
     <string name="do_b_key">-8.484603E-8</string>
-    <string name="lib_spatial_gain_map_3_key">Off (as in library)</string>
     <string name="gr_key">-0.148</string>
+    <string name="lib_spatial_gain_map_3_key">Off (as in library)</string>
     <string name="lib_luma_dh_sabre_l4b_key">Off (as in library)</string>
     <string name="pref_manual_iso_noise_key_0">3200</string>
     <string name="lib_luma_dl_sabre_l5_key">Off (as in library)</string>
@@ -353,8 +352,8 @@
     <string name="pref_satcct_g_key">1.0</string>
     <string name="pref_camera_switch_position_key">right</string>
     <string name="pref_upscaling_key">0</string>
-    <string name="pref_camera_hdr_plus_key">on</string>
     <string name="lib_rr_key">1.679</string>
+    <string name="pref_camera_hdr_plus_key">on</string>
     <string name="pref_bitrate_key">0</string>
     <string name="pref_xml_path_key">/Download/AGC.9.2/configs/</string>
     <boolean name="camcorder_sapphire_opt" value="true" />
@@ -363,19 +362,20 @@
     <string name="lib_sabre_sharp_tuning_radius_l10_key"></string>
     <string name="info_hardware_key">qcom</string>
     <boolean name="camcorder.trk_yuv" value="true" />
-    <string name="info_sdk_key">36</string>
     <string name="lib_sharpen_default_vh_3a_key"></string>
     <string name="bs_r_key">1.0785347E-5</string>
+    <string name="info_sdk_key">36</string>
     <string name="lib_max_short_frames_key_p1_0">50</string>
     <string name="lib_custom_patch_count_key_p1_0">5</string>
     <string name="lib_fix_shasta_merge_key_p1_0">Off (as in library)</string>
-    <string name="lib_hdr_effect_key">Off (as in library)</string>
     <string name="lib_luma_dm_sabre_l5a_key">Off (as in library)</string>
+    <string name="lib_hdr_effect_key">Off (as in library)</string>
     <string name="lib_bg_key">-0.914</string>
     <string name="pref_gcam_version_key">9.2</string>
     <string name="pref_raw_res_key">0</string>
-    <string name="pref_blue_coeff_key">1.0</string>
     <string name="pref_preview_key_0">35</string>
+    <string name="pref_blue_coeff_key">1.0</string>
+    <string name="lib_gpu_sharpness_key_p0_0">0.6</string>
     <boolean name="camera.shasta.force" value="false" />
     <string name="pref_camera_sounds_key">0</string>
     <boolean name="camera.falcon_force_fusion" value="true" />
@@ -389,12 +389,12 @@
     <string name="pref_switch_front_restart_key">1</string>
     <string name="lib_hardmerge_key">Off (as in library)</string>
     <string name="rb_key">0.257</string>
-    <string name="lib_pref_g_hue_key">0</string>
     <string name="lib_sabre_sharp_tuning_l2_key"></string>
+    <string name="lib_pref_g_hue_key">0</string>
     <string name="lib_highlight_fix_key">Off (as in library)</string>
     <string name="lib_luma_dl_sabre_l4_key">Off (as in library)</string>
-    <string name="lib_gpu_hue_key">90</string>
     <string name="pref_expcomp_key">0</string>
+    <string name="lib_gpu_hue_key">90</string>
     <int name="gcam.zsl_buffer_size" value="8" />
     <string name="lib_black_point_key"></string>
     <string name="perf_has_run_second_education">1</string>
@@ -415,8 +415,8 @@
     <string name="pref_camera_pistachio_enabled_key">1</string>
     <string name="do_r_key">-8.484603E-8</string>
     <string name="key_promote_launch_wear">0</string>
-    <string name="pref_last_installed_version_code">67152686</string>
     <string name="lib_sharp_gain_key"></string>
+    <string name="pref_last_installed_version_code">67152686</string>
     <string name="lib_sharpen_default_m_3a_key"></string>
     <string name="lib_sabre_sharp_tuning_radius_l9_key"></string>
     <string name="lib_pref_green_coeff_key">1.0</string>
@@ -434,6 +434,7 @@
     <string name="lib_luma_dl_sabre_l1b_key">Off (as in library)</string>
     <boolean name="camcorder.washington" value="true" />
     <string name="lib_sharpen_default_h_2a_key"></string>
+    <string name="lib_black_point_key_p1_0">0.125</string>
     <string name="pref_manual_opmode_portrait_key">0</string>
     <string name="lib_profile_title_key"></string>
     <string name="lib_pref_satcct_y_key">1.0</string>
@@ -451,6 +452,7 @@
     <string name="lib_sharpen_default_vl_3a_key"></string>
     <string name="lib_resamplmethod_key">Off (as in library)</string>
     <string name="lib_gpu_sharpness_key">0</string>
+    <string name="lib_shadows_key_p1_0">4.75</string>
     <string name="lib_merge23_luma_dh_sabre_l5a_key">Off (as in library)</string>
     <boolean name="camera.sabre_raw" value="true" />
     <string name="pref_awbratio_key">0</string>
@@ -470,8 +472,8 @@
     <string name="perf_has_shown_options_bar">1</string>
     <string name="lib_sabre_sharp_tuning_l5_key"></string>
     <string name="lib_lutnoisefix_key"></string>
-    <string name="pref_mode_vesperad_option">0</string>
     <string name="pref_manual_iso_noise_key">6400</string>
+    <string name="pref_mode_vesperad_option">0</string>
     <string name="pref_disabled_compress_merged_dng_key">1</string>
     <string name="lib_contrast_black_2_key">Off (as in library)</string>
     <boolean name="hdrnet_enabled" value="false" />
@@ -490,15 +492,16 @@
     <string name="lib_pref_frame_count_zsl_key_p1_1">25</string>
     <string name="lib_pref_frame_count_zsl_key_p1_2">25</string>
     <string name="lib_pref_frame_count_zsl_key_p1_3">30</string>
-    <string name="lib_hardmerge_key_p1_0">3</string>
     <string name="lib_sabre_sharp_tuning_details_l2_key"></string>
+    <string name="lib_hardmerge_key_p1_0">3</string>
     <string name="lib_pref_frame_count_zsl_key_p1_4">0</string>
     <string name="pref_camera_front_flashmode_key">off</string>
     <string name="lib_pref_frame_count_zsl_key_p1_5">0</string>
     <string name="lib_pref_frame_count_zsl_key_p1_6">0</string>
-    <string name="pref_video_fps_vb_key">FPS_30</string>
+    <string name="lib_contrast_black_key_p0_0">0.50</string>
     <string name="lib_max_frame_count_key"></string>
     <string name="pref_camera_hdr_plus_override_key"></string>
+    <string name="pref_video_fps_vb_key">FPS_30</string>
     <boolean name="gcam.eager_simultaneous_merge_and_finish" value="true" />
     <string name="perf_has_run_first_education">1</string>
     <string name="lib_sharpen_default_vh_1_key"></string>
@@ -506,8 +509,8 @@
     <string name="lib_sabre_sharp_tuning_l4_key"></string>
     <boolean name="camera.cheetah_long_enabled" value="true" />
     <string name="lib_luma_dm_sabre_l2a_key">Off (as in library)</string>
-    <string name="pref_aux_front_key">0</string>
     <string name="bs_b_key">1.0785347E-5</string>
+    <string name="pref_aux_front_key">0</string>
     <string name="lib_gpu_gamma_key">1.0</string>
     <string name="info_device_key">q5q</string>
     <string name="pref_cct_wb_offset_key">1.0</string>
@@ -518,8 +521,8 @@
     <string name="lib_luma_dl_sabre_l2a_key">Off (as in library)</string>
     <string name="lib_pref_frame_count_zsl_key">0</string>
     <string name="pref_has_checked_dual_ev_brightness">0</string>
-    <string name="lib_gpu_luminance_threshold_key">0</string>
     <string name="lib_sharpen_default_h_3a_key"></string>
+    <string name="lib_gpu_luminance_threshold_key">0</string>
     <string name="lib_optimize_sky_key">Off (as in library)</string>
     <string name="pref_camera_picturesize_front_key">3648x2736</string>
     <string name="lib_exposition_key_p1_0">12</string>
@@ -537,8 +540,8 @@
     <string name="lib_merge23_luma_dh_sabre_l4a_key">Off (as in library)</string>
     <string name="bb_key">1.828</string>
     <string name="pref_watermark_logo_key">agc.png</string>
-    <string name="lib_luma_dh_sabre_l1a_key">Off (as in library)</string>
     <string name="lib_chroma_a_key">0.5</string>
+    <string name="lib_luma_dh_sabre_l1a_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_l6_key"></string>
     <string name="lib_luma_dm_sabre_l1a_key">Off (as in library)</string>
     <string name="lib_spatial_a_key">0.5</string>
@@ -556,10 +559,11 @@
     <string name="pref_satcct_r_key">1.0</string>
     <string name="lib_sabre_sharp_tuning_radius_l8_key"></string>
     <boolean name="camera.falcon_tpu_enabled" value="true" />
+    <string name="lib_gpu_saturation_key_p0_0">1.15</string>
     <boolean name="camcorder.stokes_uw" value="true" />
     <string name="lib_bayer_noise_model_halide_3_key">Off (as in library)</string>
-    <boolean name="camcorder.sync_fps" value="true" />
     <boolean name="camera.include_ultra_short_frame" value="true" />
+    <boolean name="camcorder.sync_fps" value="true" />
     <string name="lib_disable_safe_under_exposure_key">Off (as in library)</string>
     <boolean name="camera.allow_fine_haptics" value="true" />
     <string name="lib_profile_title_key_p1_0">Night (full tune)</string>
@@ -568,6 +572,7 @@
     <string name="lib_sabre_burst_merge_1_key_p1_0">1.75</string>
     <string name="pref_satcct_b_key">1.0</string>
     <string name="lib_exposure_compensation_key"></string>
+    <string name="lib_gamma_key_p0_0">7</string>
     <string name="pref_storage_saver_auto_disable">0</string>
     <string name="lib_smoothness_key">Off (as in library)</string>
     <string name="lib_luma_dh_sabre_l1b_key">Off (as in library)</string>
@@ -598,18 +603,18 @@
     <string name="pref_lens_title_key_1">Wide</string>
     <string name="pref_lens_title_key_0">Main</string>
     <string name="pref_lens_title_key_3">F(olded)</string>
-    <string name="pref_camera_hdr_plus_override_key_p1_0">on</string>
     <string name="key_social_share_opt_in">1</string>
     <string name="pref_lens_title_key_2">Tele</string>
+    <string name="pref_camera_hdr_plus_override_key_p1_0">on</string>
     <string name="key_ff_opt_in">0</string>
     <boolean name="camcorder.fossil" value="true" />
-    <string name="pref_has_checked_dual_ev_shadow">0</string>
     <string name="lib_sharp_mini_key">Off (as in library)</string>
+    <string name="pref_has_checked_dual_ev_shadow">0</string>
     <string name="pref_camera_hdr_plus_override_key_p1_1">on</string>
-    <string name="pref_cct_wb_intensity_key">1.0</string>
     <string name="pref_lens_title_key_5">U(nfolded)</string>
-    <string name="pref_camera_hdr_plus_override_key_p1_2">on</string>
+    <string name="pref_cct_wb_intensity_key">1.0</string>
     <string name="pref_lens_title_key_4">U(nfolded)</string>
+    <string name="pref_camera_hdr_plus_override_key_p1_2">on</string>
     <string name="pref_camera_hdr_plus_override_key_p1_3">on</string>
     <string name="pref_camera_hdr_plus_override_key_p1_4">off</string>
     <string name="pref_lens_title_key_6">U(nfolded)</string>
@@ -619,15 +624,15 @@
     <string name="lib_sabre_brigthtness_key_p1_0">1.125</string>
     <string name="lib_gb_key">0.085</string>
     <string name="lib_sabre_sharp_tuning_radius_l7_key"></string>
-    <string name="lib_volume_processing_2_key">Off (as in library)</string>
     <string name="pref_opmode_slowmo_key">0</string>
+    <string name="lib_volume_processing_2_key">Off (as in library)</string>
     <string name="lib_hdr_ratio_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_details_l13_key"></string>
-    <string name="lib_max_relative_tet_factor_key"></string>
     <string name="lib_softsharp_key">Off (as in library)</string>
+    <string name="lib_max_relative_tet_factor_key"></string>
     <string name="as_gr_key">4.9889366E-7</string>
-    <string name="lib_gpu_highlights_key">1.0</string>
     <string name="lib_sharp_distrib_3_key">Off (as in library)</string>
+    <string name="lib_gpu_highlights_key">1.0</string>
     <string name="lib_sharpen_default_m_1_key"></string>
     <string name="pref_slow8x_key_0">1</string>
     <boolean name="camcorder_recorder_warm_up" value="true" />
@@ -652,9 +657,9 @@
     <string name="lib_sabre_contrast_sharp_key">Off (as in library)</string>
     <string name="pref_watermark_title_key"></string>
     <string name="do_gr_key">-8.484603E-8</string>
-    <string name="lib_max_frame_count_key_p1_0">50</string>
     <string name="pref_device_key">29</string>
     <string name="lib_allow_spatial_rgb_key">Off (as in library)</string>
+    <string name="lib_max_frame_count_key_p1_0">50</string>
     <string name="black_level_2_key">64.0</string>
     <string name="pref_ois_data_key">1</string>
     <string name="pref_expcomp_key_0">1</string>
@@ -683,8 +688,8 @@
     <string name="lib_luma_dh_sabre_l2a_key">Off (as in library)</string>
     <string name="pref_vffps_low_key">15</string>
     <string name="lib_iso_expo_tuning_key"></string>
-    <string name="info_manuf_key">samsung</string>
     <string name="lib_pref_satcct_g_key">1.0</string>
+    <string name="info_manuf_key">samsung</string>
     <string name="lib_min_bracketing_frames_key_p1_0">20</string>
     <boolean name="camcorder.audio_zoom" value="true" />
     <string name="lib_sabre_sharp_tuning_l11_key"></string>
@@ -705,6 +710,7 @@
     <string name="lib_savannah_merge_key">Off (as in library)</string>
     <string name="lib_sharpen_default_vl_2_key"></string>
     <string name="lib_fine_spatial_max_2_key_p1_0">1.0 (Default)</string>
+    <string name="pref_metering_mode_key">0</string>
     <string name="lib_fixraw16merge_key">Off (as in library)</string>
     <string name="pref_photo_grayscale_key">1</string>
     <string name="lib_sabre_2_key_p1_0">100(default)</string>
@@ -731,10 +737,10 @@
     <string name="lib_sabre_sharp_tuning_radius_l17_key"></string>
     <string name="lib_luma_dm_sabre_l3b_key">Off (as in library)</string>
     <string name="lib_downsample_by_2_before_merge_key">Off (as in library)</string>
-    <string name="lib_sabre_sharp_tuning_l9_key"></string>
     <string name="pref_prefix_key">AGC_</string>
-    <string name="lib_sharpen_default_h_2_key"></string>
+    <string name="lib_sabre_sharp_tuning_l9_key"></string>
     <string name="lib_sabre_sharp_tuning_details_l6_key"></string>
+    <string name="lib_sharpen_default_h_2_key"></string>
     <boolean name="camera.hawk_force_fusion" value="true" />
     <string name="lib_sharpen_default_m_2a_key"></string>
     <string name="lib_merge23_luma_dh_sabre_l5_key">Off (as in library)</string>
@@ -747,15 +753,15 @@
     <string name="do_gb_key">-8.484603E-8</string>
     <boolean name="pref_disabled_discard_frames" value="true" />
     <string name="lib_luma_dm_sabre_l4_key">Off (as in library)</string>
-    <string name="lib_sharp_distrib_rad_1_key">Off (as in library)</string>
     <string name="lib_fine_spatial_max_2_key">Off (as in library)</string>
+    <string name="lib_sharp_distrib_rad_1_key">Off (as in library)</string>
     <string name="pref_photo_watermark_key">0</string>
     <string name="lib_initial_zoom_key">1.0</string>
     <string name="pref_frame_count_key_0">25</string>
     <string name="lib_volume_processing_key_p1_3">29.0</string>
     <string name="lib_volume_processing_key_p1_2">29.0</string>
-    <string name="lib_volume_processing_key_p1_1">29.0</string>
     <string name="gg_key">1.062</string>
+    <string name="lib_volume_processing_key_p1_1">29.0</string>
     <string name="black_level_0_key">64.0</string>
     <string name="lib_volume_processing_key_p1_0">25.0</string>
     <string name="pref_y_hue_key">0</string>
@@ -796,8 +802,8 @@
     <string name="as_gb_key">4.9889366E-7</string>
     <string name="pref_micro_video_width_key">640</string>
     <string name="lib_luma_dh_sabre_l5a_key">Off (as in library)</string>
-    <string name="lib_raw_sharpen_a_key">Off (as in library)</string>
     <string name="pref_manual_focus_infinity_key">0</string>
+    <string name="lib_raw_sharpen_a_key">Off (as in library)</string>
     <boolean name="camera.enable_zebras" value="true" />
     <string name="pref_preview_key">0</string>
     <boolean name="camera.kepler_enabled" value="true" />
@@ -805,8 +811,8 @@
     <string name="lib_sabre_sharp_tuning_radius_l18_key"></string>
     <string name="lib_sharp_distrib_rad_2_key">Off (as in library)</string>
     <long name="tooltip_latest_impression_timestamp_for_p11_edu" value="1788962017839" />
-    <string name="lib_sharp_legibility_key">Off (as in library)</string>
     <string name="lib_highlight_key">Off (as in library)</string>
+    <string name="lib_sharp_legibility_key">Off (as in library)</string>
     <int name="c2api.viewfinder_noise_reduction_mode" value="2" />
     <boolean name="camera.enable_sideline" value="true" />
     <string name="lib_polysharp_radius_large_key"></string>
@@ -816,8 +822,8 @@
     <string name="lib_fine_spatial_max_1_key">Off (as in library)</string>
     <string name="lib_sabre_sharp_tuning_details_l16_key"></string>
     <string name="lib_shasta_max_exp_ms_key_p1_3">4000</string>
-    <string name="lib_sharpen_default_vh_1a_key"></string>
     <string name="lib_sharpen_default_vh_3_key"></string>
+    <string name="lib_sharpen_default_vh_1a_key"></string>
     <string name="lib_fix_sabre_noise_key_p1_0">0.000099659 (Default)</string>
     <string name="info_sys_version_key">16</string>
     <string name="lib_tone_custom_key"></string>
@@ -831,11 +837,11 @@
     <string name="pref_global_hue_key">0</string>
     <string name="lib_portrait_use_opencl_depth_key">Off (as in library)</string>
     <string name="lib_contrast_1_key">Off (as in library)</string>
-    <string name="lib_shasta_max_exp_ms_key_p1_2">4000</string>
     <string name="lib_sabre_sharp_tuning_details_l17_key"></string>
+    <string name="lib_shasta_max_exp_ms_key_p1_2">4000</string>
     <string name="lib_shasta_max_exp_ms_key_p1_1">4000</string>
-    <string name="lib_shasta_max_exp_ms_key_p1_0">8000</string>
     <string name="lib_luma_dh_sabre_l2b_key">Off (as in library)</string>
+    <string name="lib_shasta_max_exp_ms_key_p1_0">8000</string>
     <string name="lib_sabre_sharp_tuning_details_l4_key"></string>
     <string name="pref_watermark_bg_key">0</string>
     <string name="lib_gamma_key">Off (as in library)</string>
@@ -853,6 +859,4 @@
     <string name="pref_camera_advice_settings">1</string>
     <boolean name="camera.advice.dirtylens" value="true" />
     <boolean name="camera.catfish_enabled" value="true" />
-    <string name="lib_shadows_key_p1_0">4.75</string>
-    <string name="lib_black_point_key_p1_0">0.125</string>
 </map>

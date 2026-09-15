@@ -1239,3 +1239,22 @@ Final unlock verification per goal contract (function-level, not just state):
   root-caused + discipline fixed (force-stop before every prefs write).
 - Day v3.1 re-armed clean (same root cause).
 - N1 fired per 2x/2x rule. Repo clean through 6779c77.
+
+### CONFIG TRUE-SYNC (07:18-07:26) - app-serializer exports replace hand-patched files
+
+LO caught it: the release configs were Sept-13 vintage hand-patches, not device exports.
+The v6.0.0 night file was missing Day v3.1 entirely; day file same vintage.
+
+**Fix:** full re-export through the app's own Save (settings > Configs > Save):
+- fold5_night_full.agc (v3 export): 840/840 entries match live prefs, all 10 critical
+  keys exact (N1 50 frames, jewels, metering 0, profile 4, Day v3.1 keys).
+- fold5_day_sun.agc (v3 export): day selector 3, v3.1 keys verified; pair differs only
+  by selector + one tooltip counter.
+- Metering drift (3 on pref + night slot, from LO's evening session) root-caused as
+  unintentional and FIXED to 0 pre-export (V2.1 doctrine; force-stop-first discipline).
+- Device restored to standing NIGHT profile after the day export.
+
+Export automation notes for the trail: settings > Configs > Save opens a Nickname dialog
+(EditText + Yes/No); field needs keyevent-123 + 40x DEL clear (paste concatenation trap),
+Yes at [1423,779][1567,887]; wake+unlock gating mandatory at every phase (screen-off ate
+one full attempt); app's own serializer output = 52540 bytes = byte-exact live prefs.

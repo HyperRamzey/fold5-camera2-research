@@ -191,7 +191,6 @@ Mechanism notes for the curious: `lib_patch_profile_key` is the patch selector �
 
 Standard GCam-modding disclaimer: this is a modified proprietary Pixel Camera binary, shared for personal use on your own device, same as every other AGC/GCam build on XDA. Use at your own risk.
 
-
 ### 🎛️ V2.1 update (Sept 13, later) — viewfinder AE fix: the `meteringMode` anchor
 
 One-pref fix for the "viewfinder takes exposure at open and never updates" complaint some of you will hit with imported configs: AGC stamps Samsung's vendor key `samsung.android.control.meteringMode` on **every** capture request on Samsung builds, reading it from `pref_metering_mode_key`. Configs built on the `fold5_best` lineage ship that as **`3`** — on the Fold 5's TsAe HAL that's trigger-style metering (converge once at open, park; only tap/zoom re-meters). The HAL was verified innocent first (continuous-AE OpMode, unlocked, no manual pin — Samsung's own `SS_3A` trace), then the vendor-tag dump caught `meteringMode: [3]` live in the request.
