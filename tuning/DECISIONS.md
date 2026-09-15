@@ -1211,3 +1211,31 @@ Resume the night mow at next true-dark window.
 **Standing state:** v6.8-nsunlock live (jsc + hnf patches), frame_count_ns=50 armed,
 all tunes intact (verified 47 p1_0 + jewels + Day v3.1 before leg), backups
 prefs_backup_N1_fc50.xml on device. Shots pulled: tune\shots\N1_A1/A2/B1/B2.
+
+### NS PANEL-ROW FUNCTION VERIFIED (06:01-06:04, v6.8-nsunlock)
+
+Final unlock verification per goal contract (function-level, not just state):
+- Quick menu opened (moon chip): all 4 rows enabled - Reset all / Night Sight / Exposure / WB.
+- PANEL NS row (left column [72,1115][198,1241]) tapped at 135,1178: sheet re-presents
+  with NS controls context, camera alive (pid 11783), mode NIGHT_SIGHT held, crash buffer
+  empty, shutter + exposure counter live.
+- Earlier near-miss documented: first tap test accidentally targeted the drawer chip behind
+  the menu (both matched "Night Sight") - bounds discipline added (panel row = x<300).
+  UNLOCK VERIFIED AT FUNCTION LEVEL. LO visual acceptance still the final instrument.
+
+### NIGHT CAMPAIGN STATUS (twilight-gated, resume at true dark)
+
+- N1 frame_count_ns 25->50: FIRED + banked (-2.6% noise in weak scene, 50 standing).
+- Queue: N2 max_exp_ms 8000->16000, N3 iso cap 3200, N4 sabre/shasta merge rack.
+- Method locked: 2x shots / 2x dwell / adjacent brackets / force-stop-before-write /
+  EXIF ISO+exp ladders / noise estimate (d2px proxy).
+
+### SESSION TOTALS (2026-09-15 00:03-06:04)
+
+- Two NS gates root-caused to exact smali methods + patched + installed (v6.7 jsc.h abort,
+  v6.8 hnf.m gray-out), signature-matched debug key throughout, tunes preserved across all
+  installs (verified each time: Day v3.1, Night jewels, 47 p1_0).
+- Night jewels restored (shadows 4.75 / black_point 0.125) after write-while-running loss
+  root-caused + discipline fixed (force-stop before every prefs write).
+- Day v3.1 re-armed clean (same root cause).
+- N1 fired per 2x/2x rule. Repo clean through 6779c77.
