@@ -27,7 +27,7 @@
 - **3x tele (hidden lens 52)** — RAW 3648×2736, HDR+ ✅
 - **Front (hidden lens 71)** — opens, previews, captures (no RAW — see FAQ) ✅
 - Photo verified end-to-end: 4080×3060 JPEG through lens 56, 3648×2736 through tele 52
-- HDR+, Night Sight (back lenses), Astrophotography, Portrait, Panorama
+- HDR+, Night Sight (back lenses — mode entry, config panel and quick-menu controls all functional since V3), Astrophotography, Portrait, Panorama
 - No crashes on launch / lens switch / front switch — crash buffer stays empty
 
 ### ❌ What doesn't / won't ever
@@ -58,7 +58,7 @@ The gate is **not** the HAL, kernel, or any prop you can flip:
 
 ---
 
-### 🩹 The five Fold 5 fixes in this build (all published as smali diffs in `patches/`)
+### 🩹 The seven Fold 5 fixes in this build (all published as smali diffs in `patches/`)
 
 **Fix 1 — NPE in AGC's camera scanner** (`com.agc.Camera.getRawSizeW/getRawSizeH`, patch 0001)
 AGC crashes on boot with `Attempt to get length of null array` because the Fold 5's front cameras legitimately have **no RAW sizes** and the stock code does `array-length` before any null check. Added null guards → graceful 0 return.
@@ -75,20 +75,24 @@ AGC's finder queries RAW16 only; the Fold5 front cams (1, 3, 71, 73) expose no R
 **Fix 5 — jba stream-format array YUV fallback** (`jba.smali`, patch 0005)
 Same family: the stream-format loop hard-required a RAW entry per camera and threw on the RAW-less front; the fallback walks the format array and accepts YUV_420_888 as the merge source for the front path.
 
+**Fix 6 — GCam device-recognition abort → generic class** (`jsc.smali`, patch 0006)
+GCam's internal device classifier (`jsc.h()`) probes a Pixel-only fingerprint database (64-bit hardware constants per model). The SM-F946B matches nothing, so the cascade fell through to `throw new phq("Device is not recognizable. Aborting.")` — which is what killed the app whenever Night Sight's module/panel initialization ran the check on a background thread (crash state dump: `applicationMode=NIGHT_SIGHT`, Panel window opening). Fix 6 replaces the throw with a return of the generic device class (`gwt.h`) — unknown devices classify as generic instead of aborting. Known-device paths untouched.
+
+**Fix 7 — Night Sight panel-item always-enable** (`hnf.smali`, patch 0007)
+The moon+"1s" quick-controls sheet (White balance / Exposure / **Night Sight** / Reset all) showed the Night Sight row permanently grayed: the panel-item enable switch (`hnf.m(Z)`) is driven by an upstream observable that is always false on this device, which added NS to the exclusion set that disables the row. Fix 7 removes the disable branch — the row is always enabled. Verified end-to-end: menu opens, all four rows enabled, the NS row taps and responds.
+
 Patches apply cleanly to the stock AGC9.2.14_V14.0_ruler apktool output — repo → `patches/`, each numbered in apply order.
 
 ---
 
 ### 📥 Download & install
 
-**[DOWNLOAD — v5.0.0 release (GitHub)](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v5.0.0)** — APK + `fold5_day_sun.agc` + `fold5_night_full.agc` in the release assets. Legacy v4.x releases stay on their own tags for history.
+**[DOWNLOAD — v6.0.0 release (GitHub)](https://github.com/HyperRamzey/fold5-camera2-research/releases/tag/v6.0.0)** — APK + `fold5_day_sun.agc` + `fold5_night_full.agc` (now with the 50-frame Night Sight stack) in the release assets. Legacy releases stay on their own tags for history.
 
-1. Uninstall any previous GCam/AGC on the Fold 5 first (package `com.samsung.android.ruler`).
-2. Install the APK (allow unknown sources).
+1. Coming from v5.x of this fork: `adb install -r` upgrades in place (same key) — settings and configs preserved.
+2. Coming from stock AGC `_ruler` or another fork: clean install required (different signature).
 3. Open → grant Camera + (optionally) location/mic + **All files access** (for saving to DCIM).
 4. Done. First launch takes a few seconds (it scans all 14 devices).
-
-Sign key: self-signed debug — install with `-r` over the stock AGC `_ruler` build won't work (different signature); clean install required.
 
 ---
 
@@ -155,9 +159,10 @@ Mechanism notes for the curious: `lib_patch_profile_key` is the patch selector �
 
 **Fold 5 gotchas from the pass:**
 
-- Tapping the **Night-mode chip** in the portrait chip row crashes the app on this device (pre-existing zoom-module resolver crash — reproduces byte-identically on the stock AGC build, so it's not a tuning artifact). Night captures work via auto-engagement; the exposure bank lives in the photo pipeline anyway.
+- ~~Tapping the **Night-mode chip** in the portrait chip row crashes the app on this device~~ — **root-caused and fixed in V3:** the crash was the same `jsc.h()` device-recognition abort as the NS config-panel crash (Fix 6), not a zoom-module resolver as first attributed. Both entry paths are clean now.
 - If the phone dies mid-tune, the last-applied key **survives** in the config — always re-verify state after any interruption before judging results.
 - Wireless ADB rotates its port on every reboot (and the daemon can drop when the battery dies) — reconnect via `adb mdns services`.
+- **Tuning-at-your-own-risk note for root users:** never edit the app's prefs XML while the camera is running — the app rewrites the file from its in-memory snapshot on the next commit and silently deletes any keys you armed while it was alive. Always force-stop first. (Cost me two keys to learn; all harness scripts now enforce it.)
 
 **Dusk re-verify pending:** several keeps were measured in drifting morning light (sunrise + clouds) — the ratios were consistent but the light wasn't. The stable-light confirmation list is documented in the repo log; treat morning numbers as directional until that pass runs.
 
@@ -193,6 +198,27 @@ One-pref fix for the "viewfinder takes exposure at open and never updates" compl
 
 **Fix:** set `pref_metering_mode_key` (and any `lib_pref_metering_mode_key_p0_0` / `_p1_0` per-slot copies) to **`0`** (matrix/continuous). All four configs in the release now ship 0 — pan-tested, the preview adapts both directions like stock. If you imported an older config: change the value in the app or re-import the new files.
 
+### 🎛️ V3 update (Sept 15) — Night Sight fully unlocked + 50-frame night stack
+
+**The headline:** the config-gear crash is dead and the grayed Night Sight row in the quick-controls sheet works now — two more Samsung-hardware gates root-caused to the exact smali method and patched (Fixes 6 + 7 above). No more "Night Sight button grayed out" on the Fold 5.
+
+**What was wrong:** two separate gates, both device-recognition.
+
+1. **The config-panel crash.** Tapping the gear icon in Night Sight killed the app with `FATAL: phq: Device is not recognizable. Aborting.` — GCam's internal classifier probes a Pixel-only hardware-fingerprint database and the Fold 5 matches nothing, so the panel's init thread aborted. Now unknown devices classify as generic and the panel opens clean.
+2. **The quick-menu gray-out.** The moon+"1s" sheet's Night Sight row (the one next to White balance and Exposure) was permanently disabled by an always-false device-gated observable. Now always enabled — verified live: menu opens, all four rows alive, the NS row taps and responds.
+
+The V2 "night chip crash" gotcha turned out to be gate #1 all along — same root cause, now fixed. Full smali-level root-cause chains (with the DI wiring path) in `tuning/DECISIONS.md`.
+
+**Night Sight tuning, leg 1 fired:** the stacking rack is now mapped and the first lever verified with a 2x-shots/2x-dwell A/B:
+
+| Key | Was | Now | Measured |
+| --- | --- | --- | --- |
+| `lib_pref_frame_count_ns_key_p1_0` (NS frame count) | 25 | **50** | **−2.6% noise** vs stock (real merge gain, exceeded both sides' internal spread); luma/chroma flat; channel balance flat; no side effects |
+
+50 frames ship in `fold5_night_full.agc` on the v6.0.0 release. The rest of the rack (max exposure 8s→16s, ISO ceiling, sabre/shasta merge tuning) is darkness-gated — fired the first leg at 05:48 and the scene was already twilight (ISO ~1000), so those resume at true dark per the campaign's light-gate discipline.
+
+**Process hardening banked:** the prefs write-while-running bug (root cause of two silent key losses, now force-stop-before-write everywhere in the harness) and the ISO EXIF parse (SHORT little-endian) are documented in the repo log for anyone scripting their own passes.
+
 ---
 
 *Changelog:*
@@ -200,3 +226,4 @@ One-pref fix for the "viewfinder takes exposure at open and never updates" compl
 - *V1 — initial Fold 5 release: Fix 1 (scanner NPE) + Fix 2 (front-cam gcam metadata rejection) on AGC9.2.14_V14.0_ruler base. All four lenses verified: 56/58/52/71.*
 - *V2 (2026-09-13) — no APK changes, configs + research only: full A/B tuning campaign (158-row log), Night Sight exposure bank (up to 4x light), 14 feature flags kept / 7 reverted / 3 camera-breakers identified, 7 lib scalars kept / 7 reverted, and GUI-selectable Day/Night profiles — now at picker rows 1/2 — plus the corrected profile-slot mechanism (Ka-row trap documented). Patch series in the repo: 0001–0005 (V1 launch fixes 0001/0002; v4.x burst work 0003; v4.3 front-cam gates 0004/0005).*
 - *V2.1 (2026-09-13) — viewfinder AE fix: pref_metering_mode_key 3→0 (Samsung vendor meteringMode trigger-style metering was anchoring preview exposure at open; configs rebaked, pan-verified both directions).*
+- *V3 (2026-09-15) — Night Sight fully unlocked: Fix 6 (jsc device-recognition abort → generic class — kills the NS config-panel crash AND the night-chip crash from V2's gotchas) + Fix 7 (hnf NS panel-item always-enable — ungrays the quick-menu Night Sight row). Night leg 1: frame_count_ns 25→50 verified (−2.6% noise), shipped in fold5_night_full.agc. Night mow continues at true dark.*

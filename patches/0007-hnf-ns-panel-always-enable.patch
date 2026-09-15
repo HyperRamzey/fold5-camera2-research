@@ -1,0 +1,52 @@
+--- a/smali/hnf.smali
++++ b/smali/hnf.smali
+@@ -2395,30 +2395,18 @@
+     iget-object v0, p0, Lhnf;->n:Lhok;
+ 
+     invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+ 
+     sget-object v1, Lhnl;->o:Lhnl;
+ 
+-    if-eqz p1, :cond_0
+-
+     iget-object v2, v0, Lhok;->f:Ljava/util/Set;
+ 
+     invoke-interface {v2, v1}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
+ 
+     move-result v2
+ 
+-    goto :goto_0
+-
+-    :cond_0
+-    iget-object v2, v0, Lhok;->f:Ljava/util/Set;
+-
+-    invoke-interface {v2, v1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+-
+-    move-result v2
+-
+-    :goto_0
+     if-eqz v2, :cond_1
+ 
+     invoke-virtual {v0, v1}, Lhok;->p(Lhnl;)Lj$/util/OptionalInt;
+ 
+     move-result-object v1
+ 
+@@ -2476,16 +2464,17 @@
+ 
+     iget-object p1, p0, Lhnf;->n:Lhok;
+ 
+     iget-object v0, p0, Lhnf;->j:Lj$/util/Optional;
+ 
+     invoke-virtual {p1, v0}, Lhok;->t(Lj$/util/Optional;)V
++
++    :cond_3
+     :try_end_0
+     .catchall {:try_start_0 .. :try_end_0} :catchall_0
+ 
+-    :cond_3
+     monitor-exit p0
+ 
+     return-void
+ 
+     :catchall_0
+     move-exception p1

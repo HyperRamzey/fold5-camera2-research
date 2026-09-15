@@ -1,0 +1,25 @@
+--- a/smali/jsc.smali
++++ b/smali/jsc.smali
+@@ -1414,19 +1414,15 @@
+ 
+     if-eqz v0, :cond_7
+ 
+     goto :goto_0
+ 
+     :cond_7
+-    new-instance v0, Lphq;
+-
+-    const-string v1, "Device is not recognizable. Aborting."
+-
+-    invoke-direct {v0, v1}, Lphq;-><init>(Ljava/lang/String;)V
+-
+-    throw v0
++    sget-object v0, Lgwt;->h:Lgwt;
++
++    return-object v0
+ 
+     :cond_8
+     :goto_0
+     sget-object v0, Lgwt;->h:Lgwt;
+ 
+     return-object v0

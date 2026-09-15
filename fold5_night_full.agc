@@ -575,7 +575,7 @@
     <string name="pref_vibro_key">1</string>
     <string name="lib_raisr_large_key">Off (as in library)</string>
     <string name="pref_camera_raw_output_key">0</string>
-    <string name="lib_pref_frame_count_ns_key_p1_0">25</string>
+    <string name="lib_pref_frame_count_ns_key_p1_0">50</string>
     <string name="lib_chroma_b_key"></string>
     <string name="lib_bb_key">1.828</string>
     <boolean name="camera.catcher_enabled" value="true" />
@@ -853,4 +853,6 @@
     <string name="pref_camera_advice_settings">1</string>
     <boolean name="camera.advice.dirtylens" value="true" />
     <boolean name="camera.catfish_enabled" value="true" />
+    <string name="lib_shadows_key_p1_0">4.75</string>
+    <string name="lib_black_point_key_p1_0">0.125</string>
 </map>
