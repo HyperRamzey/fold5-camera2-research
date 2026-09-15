@@ -1184,3 +1184,30 @@ ENABLED. Crash buffer empty, pid alive. LO visual acceptance pending.
 
 **Standing state:** v6.8-nsunlock installed. Night 2x/2x tuning mow queued next (per goal):
 frame_count_ns 25->50, max_exp_ms 8000->16000, ISO 3200, sabre/shasta rack.
+
+### NIGHT LEG N1: frame_count_ns 25->50 (2x/2x methodology) - TWILIGHT-GATED VERDICT
+
+**Leg:** lib_pref_frame_count_ns_key_p1_0 25 -> 50, sandwich A(50)x2 / B(25)x2, adjacent
+bracket 05:48-05:49, full-dwell polls, force-stop-before-write discipline held.
+
+**Metrics (drift-corrected, paired):**
+- FC50: luma 128.7, chroma 6.26/6.55, noise 1.722/1.683, p5 64, p50 134, p95 180, shMean 80.4
+- FC25: luma 129.3/129.9, chroma 6.39/6.64, noise 1.704/1.613, p5 65, p50 134, p95 181/182
+- VERDICT: noise -2.6% (real merge gain, exceeds internal spreads 0.038/0.091); luma/chroma
+  deltas within internal spread (no isolated signal); R/B flat 0.969->0.971 (no cast).
+- ISO ladder A 1081/939 vs B 1458/914; exp 0.07-0.08s ALL SIDES - scene barely dark.
+  p50 luma 134 = morning twilight arriving; NS stack never stressed.
+
+**Read:** lever VERIFIED LIVE and functional (2x frames = -2.6% noise even in weak scene),
+but the 05:48 scene cannot exercise the stacking rack meaningfully. 50 kept armed standing
+pending LO visual verdict + true-dark re-verify.
+
+**TWILIGHT GATE (mirror of Day light-gate):** sunrise underway at 05:48 (ISOs ~1000, 1/13s
+exposures, p50 134). Remaining night rack is darkness-gated: N2 max_exp_ms 8000->16000
+(cap not even binding at 0.07s exposures - meaningless in twilight), N3 iso cap 3200,
+N4 sabre/shasta merge rack. These need true dark to produce representative reads.
+Resume the night mow at next true-dark window.
+
+**Standing state:** v6.8-nsunlock live (jsc + hnf patches), frame_count_ns=50 armed,
+all tunes intact (verified 47 p1_0 + jewels + Day v3.1 before leg), backups
+prefs_backup_N1_fc50.xml on device. Shots pulled: tune\shots\N1_A1/A2/B1/B2.
