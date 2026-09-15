@@ -1097,3 +1097,57 @@ chain) is light-gated: firing legs now would produce non-representative Day meas
 Standing state: v3.1 armed + verified on new scene, Night untouched, all test keys stripped.
 Resume the mow at next daylight window.
 
+
+### NIGHT-SIGHT UNBLOCK CAMPAIGN (00:03-03:45) - CRASH ROOT-CAUSED AND PATCHED (v6.7-nsfix)
+
+**LO's report:** Night Sight config button (above exposure counter) grayed out; app crashed once
+when trying it. Goal mandate: unblock the button.
+
+**Root cause chain (fully evidenced):**
+- GCam's internal device-recognition cascade `jsc.h()` probes ~12 boolean flags on a device
+  descriptor (`njl`) keyed by 64-bit hardware fingerprint constants - a Pixel-only database.
+  The SM-F946B Fold5 matches nothing, so `jsc.h()` threw `phq: "Device is not recognizable.
+  Aborting."` - RuntimeException on a background init thread -> FATAL, process death (01:43:01,
+  full stack captured; applicationMode=NIGHT_SIGHT in the death dump).
+- The NS config panel (pro_options_panel via options_entry_button, the gear above the exposure
+  counter) runs this device-class init on open. On the Fold5 it always aborts -> panel dies ->
+  button presents grayed. NOT a mode-entry issue (NS itself entered fine 23:57-03:32; synthetic
+  taps showed a first-tap-swallowed drawer artifact that double-tap or drawer-recycle clears).
+
+**Fix (smali surgery, no functional behavior change for known devices):**
+- `smali/jsc.smali` method `h()`: replaced the `:cond_7` throw block with
+  `sget-object v0, Lgwt;->h:Lgwt;` + `return-object v0` - unknown devices now classify as the
+  generic class (gwt.h = 29, modern tier) instead of aborting. Known-device paths untouched.
+- Original backed up: tune\backups\jsc.smali.orig-v66.
+
+**Build chain (fully reproducible):**
+- apktool 3.0.3 ("G:\projects\burn in\tools\apktool_3.0.3.jar"), JBR java 25 (Android Studio),
+  zipalign + apksigner from build-tools 36.0.0, debug.keystore (C=US,O=Android,CN=Android Debug).
+- Verified installed v6.6-noreraw == tune\base.apk == dist\AGC9.2.14_v6.6-noreraw.apk (md5
+  88c41703...) - gcam_decompiled is the true source tree of the running build.
+- SIGNATURE GATE: installed APK signer SHA-256 618804ba... == debug.keystore cert. Signed
+  v6.7-nsfix with the same key; apksigner verify --print-certs equality confirmed BEFORE install.
+- install -r (data-preserving): Success, streamed install. New build md5 3fc8f2ebd95b79173bc2ca7795d3979b.
+
+**Post-install verification (03:02-03:32):**
+- Cold launch clean (PHOTO, no FATAL), prefs fully intact across install (Day v3.1 four keys +
+  Night jewels shadows 4.75 / black_point 0.125 + all 47 p1_0 entries verified by count + grep).
+- NS entry: NIGHT_SIGHT at 03:02:25 and 03:29:26 / 03:32:42.
+- THE TEST: config button tapped in NS on v6.7 -> crash buffer EMPTY, process alive (pid 26947),
+  Panel:CameraLauncher open in window stack, mode retained. Same sequence killed v6.6 at 01:43.
+- Panel content render + visual acceptance: PENDING LO's eyes (his verdict instrument, per goal).
+
+**Device state (standing):** v6.7-nsfix installed, all tunes intact. Backups on device:
+prefs_backup_pre_v67.xml (+ local copy tune\stage\prefs_pre_v67.xml). Prior backups all live.
+
+**Night-profile tuning queue (goal mandate 2, per LO's 2x-shots/2x-exposure rule):**
+Stacking rack discovered in p1_0: lib_max_exp_ms_key_p1_0=8000, lib_shasta_max_exp_ms_key_p1_0=8000,
+lib_iso_key_p1_0=3200, lib_pref_frame_count_ns_key_p1_0=25, lib_max/min_short_frames/bracketing
+=50/20, sabre/shasta/savannah merge params. 2x/2x targets: frame_count_ns 25->50, max_exp_ms
+8000->16000 (verify stream-support ceiling), with 2x shots per leg and full EXIF ISO+exposure
+ladders + noise estimates. Knob inventory mow follows the same loud-test/adjacent-ref method as Day.
+
+**Process notes:** uiautomator can never dump the camera viewfinder (busy) - drawer dumps work;
+view-tree ids via `dumpsys activity top` (bounds are container-relative, screen = container offset
++ bounds). Screen lock outruns dumps - keep cycles atomic. .ps1 files for all device scripts
+(quote-mangling discipline); smali patch scripts write UTF-8 no-BOM LF-normalized.
