@@ -113,7 +113,9 @@ public final class Eraw70 {
         try {
             SharedPreferences sp = context.getSharedPreferences(
                     "com.samsung.android.ruler_preferences", Context.MODE_PRIVATE);
-            if (sp.getInt("pref_50mp_auto_key", 1) == 0) {
+            // Default off: capture is triggered by the on-screen 50MP button.
+            // Set pref_50mp_auto_key=1 to arm headless capture at camera open.
+            if (sp.getInt("pref_50mp_auto_key", 0) == 0) {
                 Log.i(TAG, "auto: disabled by pref_50mp_auto_key");
                 return;
             }
@@ -438,12 +440,18 @@ public final class Eraw70 {
             long deadline = SystemClock.elapsedRealtime() + 12000;
             long imagesDoneAt = 0;
             while (SystemClock.elapsedRealtime() < deadline) {
-                int imgs = imagesWritten.get();
+                // Count completed file writes, not arrivals: meta.json must
+                // list all N frames, and the last write can still be in
+                // flight when the final image arrives.
+                int written;
+                synchronized (frames) {
+                    written = frames.size();
+                }
                 int done = results.size() + stillFails.get();
-                if (imgs >= N && done >= N) break;
-                if (imgs >= N && imagesDoneAt == 0) imagesDoneAt = SystemClock.elapsedRealtime();
+                if (written >= N && done >= N) break;
+                if (written >= N && imagesDoneAt == 0) imagesDoneAt = SystemClock.elapsedRealtime();
                 if (imagesDoneAt != 0 && SystemClock.elapsedRealtime() - imagesDoneAt > 2000) break;
-                if (done >= N && imgs < N) break;
+                if (done >= N && written < N) break;
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException ie) {
