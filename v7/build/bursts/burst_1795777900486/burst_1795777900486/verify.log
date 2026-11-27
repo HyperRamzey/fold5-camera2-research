@@ -1,0 +1,34 @@
+burst: v7/build/bursts/burst_1795777900486/burst_1795777900486
+frames: 6 error: None
+
+[GATE 1 distinct/size/RAW10]
+  frame sizes:
+    frame_0.raw10 62668800 B stride=10240 patch[min=0 med=68 max=188 mean=68.3 std=19.84 uniq=159]
+    note: dark frame (median 68, max 188) - lens obstructed; RAW10 noise floor accepted
+    frame_1.raw10 62668800 B stride=10240 patch[min=0 med=68 max=178 mean=67.9 std=19.83 uniq=157]
+    note: dark frame (median 68, max 178) - lens obstructed; RAW10 noise floor accepted
+    frame_2.raw10 62668800 B stride=10240 patch[min=0 med=69 max=171 mean=68.9 std=19.82 uniq=157]
+    note: dark frame (median 69, max 171) - lens obstructed; RAW10 noise floor accepted
+    frame_3.raw10 62668800 B stride=10240 patch[min=0 med=69 max=183 mean=69.4 std=19.86 uniq=159]
+    note: dark frame (median 69, max 183) - lens obstructed; RAW10 noise floor accepted
+    frame_4.raw10 62668800 B stride=10240 patch[min=0 med=68 max=177 mean=67.9 std=19.88 uniq=159]
+    note: dark frame (median 68, max 177) - lens obstructed; RAW10 noise floor accepted
+    frame_5.raw10 62668800 B stride=10240 patch[min=0 med=67 max=167 mean=67.3 std=19.95 uniq=155]
+    note: dark frame (median 67, max 167) - lens obstructed; RAW10 noise floor accepted
+  distinct: 6 unique sha256
+  sabotage PASS: deliberately duplicated buffer rejected (frame frame_0.raw10 duplicates frame_0.raw10 (sha256=1802d4bc495f507e25a18d9c00ba184b97c9f866c2a9c71d5e2d7ae1285e3a07))
+
+[GATE 2 timestamp/skew/IMU/OIS]
+  timestamp source: REALTIME (1)
+  rolling-shutter skew: 34880349..34880349 ns (source=result)
+  IMU gyro: 201 samples, 461.8 Hz, brackets burst [-47.840, 48.373] ms
+  OIS vendor: 6 samples, centered (std x=0.50 y=0.50); device stationary (gyro axis std 0.0038 rad/s) - constant hall is physically expected
+  OIS vendor: 6 samples, hall std x=0.50 y=0.50 (raw ADC)
+
+[GATE 3 speed < 1.2 s]
+  breakdown: setup=507.6 settle=297.6 capture=822.4 meta=11.4 tap_to_disk=849.1 total(incl. warm-up)=1654.3 ms
+
+==== summary ====
+GATE 1 distinct/size/RAW10             PASS 
+GATE 2 timestamp/skew/IMU/OIS          PASS 
+GATE 3 speed < 1.2 s                   PASS 

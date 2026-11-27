@@ -1,2 +1,19 @@
 AGC9.2.14_V14.0_ruler_fold5fix_v4.3-frontfix.apk
 AGC9.2.14_V6.0.0_fold5.apk
+
+# v7 build scratch (sources/tools/meta are tracked; binaries go to Releases)
+v7/build/*.apk
+v7/build/apkcheck/
+v7/build/classes/
+v7/build/dex/
+v7/build/smali/
+v7/build/bursts/**/frame_*.raw10
+v7/build/bursts/burst_1795774631806/
+v7/build/bursts/burst_1795775461734/
+v7/build/bursts/burst_1795776198481/
+v7/build/*.png
+v7/build/*.log
+v7/build/amstart.txt
+v7/build/prefs.xml
+v7/build/ui.xml
+v7/build/T.*
